@@ -1,0 +1,226 @@
+<?xml version="1.0"?>
+<Locations >
+  <Project>
+    <vfs_file>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_file>
+    <file_marker column=" 9" line=" 83" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/lca.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 66" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/lca.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 31" line=" 93" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_lca.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 12" line=" 79" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_lca.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 15" line=" 91" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 23" line=" 18" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 9" line=" 61" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 21" line=" 53" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 74" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 15" line=" 73" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 89" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 16" line=" 88" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 26" line=" 95" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 24" line=" 100" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/abr.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 64" line=" 100" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/abr.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 19" line=" 123" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 15" line=" 91" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 98" line=" 99" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 15" line=" 91" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 3" line=" 119" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 23" line=" 113" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 20" line=" 125" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 5" line=" 117" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 3" line=" 119" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 3" line=" 119" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 23" line=" 113" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 71" line=" 114" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 24" line=" 113" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 32" line=" 114" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 3" line=" 119" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 3" line=" 119" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 3" line=" 119" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 3" line=" 119" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 3" line=" 119" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 3" line=" 119" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 3" line=" 119" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 3" line=" 119" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 3" line=" 129" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 15" line=" 106" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 9" line=" 46" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/abr.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 99" line=" 45" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/abr.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 15" line=" 106" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 44" line=" 70" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 15" line=" 106" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 46" line=" 70" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 15" line=" 106" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 40" line=" 69" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 15" line=" 106" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 34" line=" 71" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 15" line=" 106" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>

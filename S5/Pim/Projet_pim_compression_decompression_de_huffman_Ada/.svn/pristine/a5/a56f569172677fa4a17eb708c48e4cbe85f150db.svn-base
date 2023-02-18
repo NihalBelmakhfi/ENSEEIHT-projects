@@ -1,0 +1,18 @@
+SCRIPT DE DEMONSTRATION PROJET CODAGE HUFFMAN:
+
+-Présentation de l'architecture globale de notre projet
+
+-Présentation des Modules,des types de données et des procédure qui y sont implémentées ainsi que des exceptions et des raisons pour lesquelles ils nous étaient utile de les implémentés.
+-Présentation des fichiers de test, exécutions de ces derniers
+
+-Présentation du fichier des programmes principaux compresser.adb et decompresser.adb, faire une correspondance de ces derniers avec nos raffinages
+
+-Exécution des programmes principaux, compression et decompression de deux fchiers de test préparés au préalable, un petit et un plus grand.
+
+-Présentation des options d'affichage implémentés pour le programme de compresseion c'est à dire affichage de l'arbre d'huffman et de la table d'huffman comme dans le cahier des charges
+
+-Démonstration de la qualité des programmes en comparant la taille des fichiers initiaux, des fichiers compressés et des fichiers décompressés.
+
+-Exécution des programmes principaux et des programmes de test avec l'outil valgrind afin de démontrer la non perte de mémoire.
+
+-Fin de la présentation

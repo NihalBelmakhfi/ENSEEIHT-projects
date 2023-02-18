@@ -1,0 +1,278 @@
+with Ada.Text_IO;           use Ada.Text_IO;
+with Ada.Integer_Text_IO;   use Ada.Integer_Text_IO;
+with SDA_Exceptions; 		use SDA_Exceptions;
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+	--! Les Unbounded_String ont une capacité variable, contrairement au String
+	--! pour lesquelles une capacité doit être fixée.
+with ABR;
+
+procedure test_module_abr is
+    package ABR_String_Integer is
+		new ABR (T_Cle => Integer, T_Donnee => Unbounded_String, "<" => "<");
+    use ABR_String_Integer;
+
+
+    -- on teste l'initialisation d'un arbre
+    procedure test_Initialiser is
+        Sda : T_ABR;
+
+    begin
+
+        initialiser(Sda);
+        pragma assert(sda = null);
+        if sda = null then
+            put("ok");
+        else
+            put("prob");
+        end if;
+    end test_Initialiser;
+
+    --on teste la fonction Est_Vide
+    procedure test_Est_Vide is
+        Sda : T_ABR;
+    begin
+        initialiser(Sda);
+        if Est_Vide(Sda) then
+            put("ok");
+        else
+            put("prob");
+        end if;
+    end test_Est_Vide;
+
+                ----------------------------------------------
+    procedure test_Taille_Enregistrer is
+            Sda, Sag, Sad : T_ABR;
+
+    begin
+           initialiser(Sda);
+           Enregistrer_Cle_Donnee(Sda,1,'a');
+           Initialiser(Sag);
+           Initialiser(sad);
+           Enregistrer_Cle_Donnee(Sag,2,'b');
+           Enregistrer_Cle_Donnee(Sad,3,'c');
+           Enregistrer_abrg_abrd(Sda,Sag,Sad);
+           pragma assert(Taille(sda)=3);
+           if Taille(Sda)=4 then
+               put("ok");
+           else
+               put("prob");
+           end if;
+    end test_Taille_Enregistrer;
+
+
+                 ----------------------------------------------
+    procedure test_Cle_Presente is
+        Sda : T_ABR;
+    Begin
+        initialiser(Sda);
+        Enregistrer_Cle_Donnee(Sda,1,'a');
+        Initialiser(Sag);
+        Initialiser(sad);
+        Enregistrer_Cle_Donnee(Sag,2,'b');
+        Enregistrer_Cle_Donnee(Sad,3,'c');
+        Enregistrer_abrg_abrd(Sda,Sag,Sad);
+        if Cle_presente(Sda, 2) and not Cle_presente(Sda, 4) then
+            Put("ok");
+        else
+            Put("prob");
+        end if;
+    end test_Cle_Presente;
+    -------------------------------------
+
+    procedure test_supprimer_enregistrer_cle is
+        Sda : T_ABR;
+    begin
+        initialiser(Sda);
+        Enregistrer_Cle(Sda, 2);
+        supprimer(Sda, 2);
+        if Est_Vide(Sda) then
+            Put("ok");
+        else
+            Put("prob");
+        end if;
+        initialiser(Sda);
+        Enregistrer_Cle_Donnee(Sda,1,'a');
+        Initialiser(Sag);
+        Initialiser(sad);
+        Enregistrer_Cle_Donnee(Sag,2,'b');
+        Enregistrer_Cle_Donnee(Sad,3,'c');
+        Enregistrer_abrg_abrd(Sda,Sag,Sad);
+        Supprimer(Sda, 3);
+        if not Cle_presente(Sda, 3) then
+            put("ok");
+        else
+            put("prob");
+        end if;
+    end test_supprimer_enregistrer_cle;
+    --------------------------------------------------------
+    procedure test_La_Donnee is
+        Sda : T_ABR;
+    begin
+        initialiser(Sda);
+        Enregistrer_Cle_Donnee(Sda,1,'a');
+        Initialiser(Sag);
+        Initialiser(sad);
+        Enregistrer_Cle_Donnee(Sag,2,'b');
+        Enregistrer_Cle_Donnee(Sad,3,'c');
+        Enregistrer_abrg_abrd(Sda,Sag,Sad);
+        Supprimer(Sda, 3);
+        pragma assert(La_Donnee(sda, 2) = 'b');
+        if La_Donnee(sda, 2) = 'b' then
+            put("ok");
+        else
+            put("prob");
+        end if;
+    end test_La_Donnee;
+
+        ------------------------------------------------
+    procedure test_Vider is
+        Sda : T_ABR;
+    begin
+        initialiser(Sda);
+        Enregistrer_Cle_Donnee(Sda,1,'a');
+        Initialiser(Sag);
+        Initialiser(sad);
+        Enregistrer_Cle_Donnee(Sag,2,'b');
+        Enregistrer_Cle_Donnee(Sad,3,'c');
+        Enregistrer_abrg_abrd(Sda,Sag,Sad);
+        vider(Sda);
+        if Est_Vide(Sda) then
+            put("ok");
+        else
+            put("prob");
+        end if;
+    end test_Vider;
+            -----------------------------------------------------
+    procedure tester_est_feuille is
+        Sda : T_ABR;
+    begin
+        initialiser(Sda);
+        Enregistrer_Cle_Donnee(Sda,1,'a');
+        Initialiser(Sag);
+        Initialiser(sad);
+        Enregistrer_Cle_Donnee(Sag,2,'b');
+        Enregistrer_Cle_Donnee(Sad,3,'c');
+        Enregistrer_abrg_abrd(Sda,Sag,Sad);
+        Enregistrer_Cle_Donnee(Sag1,4,'d');
+        Enregistrer_Cle_Donnee(Sad1,5,'e');
+        Enregistrer_abrg_abrd(Sag,Sag1,Sad1);
+        if Est_Feuille(Sag1) and not Est_Feuille(Sag) then
+             put("ok");
+        else
+            put("prob");
+        end if;
+    end tester_est_feuille;
+
+    ---------------------------------------------
+
+
+
+	procedure Tester_Pour_chaque is
+		Annuaire : T_ABR;
+
+		Somme: Integer;
+
+		procedure Sommer (Cle: integer; Donnee: Unbounded_String) is
+		begin
+			Put (" + ");
+			Put (Donnee, 2);
+			New_Line;
+
+			Somme := Somme + Donnee;
+		end;
+
+		procedure Sommer is
+			new Pour_Chaque (Sommer);
+
+	begin
+		Put_Line ("=== Tester_Pour_Chaque..."); New_Line;
+		Construire_Exemple_Sujet(Annuaire);
+		Somme := 0;
+		Sommer (Annuaire);
+		pragma Assert (Somme = Somme_Donnees);
+		Vider(Annuaire);
+		New_Line;
+	end Tester_Pour_chaque;
+
+    procedure Tester_Pour_chaque_Somme_Si_Cle_Commence_Par_Q is
+		Annuaire : T_ABR;
+
+		Somme: Integer;
+
+		procedure Sommer_Cle_Commence_Par_Q (Cle: Unbounded_String; Donnee: Integer) is
+		begin
+			if To_String (Cle) (1) = 'q' then
+				Put (" + ");
+				Put (Donnee, 2);
+				New_Line;
+
+				Somme := Somme + Donnee;
+			else
+				null;
+			end if;
+		end;
+
+		procedure Sommer is
+			new Pour_Chaque (Sommer_Cle_Commence_Par_Q);
+
+	begin
+		Put_Line ("=== Tester_Pour_Chaque_Somme_Si_Cle_Commence_Par_Q..."); New_Line;
+		Construire_Exemple_Sujet(Annuaire);
+		Somme := 0;
+		Sommer (Annuaire);
+		pragma Assert (Somme = Somme_Donnees_Q);
+		Vider(Annuaire);
+		New_Line;
+	end Tester_Pour_chaque_Somme_Si_Cle_Commence_Par_Q;
+
+
+
+	procedure Tester_Pour_chaque_Somme_Len4_Erreur is
+		Annuaire : T_ABR;
+
+		Somme: Integer;
+
+		procedure Sommer_Len4_Erreur (Cle: Unbounded_String; Donnee: Integer) is
+			Nouvelle_Exception: Exception;
+		begin
+			if Length (Cle) = 4 then
+				Put (" + ");
+				Put (Donnee, 2);
+				New_Line;
+
+				Somme := Somme + Donnee;
+			else
+				raise Nouvelle_Exception;
+			end if;
+		end;
+
+		procedure Sommer is
+			new Pour_Chaque (Sommer_Len4_Erreur);
+
+	begin
+		Put_Line ("=== Tester_Pour_Chaque_Somme_Len4_Erreur..."); New_Line;
+		Construire_Exemple_Sujet(Annuaire);
+		Somme := 0;
+		Sommer (Annuaire);
+		pragma Assert (Somme = Somme_Donnees_Len4);
+		Vider(Annuaire);
+		New_Line;
+	end Tester_Pour_chaque_Somme_Len4_Erreur;
+
+
+
+ begin
+    test_Initialiser;
+    test_Taille_Enregistrer;
+    test_Est_Vide;
+    test_Cle_Presente;
+    test_supprimer_enregistrer_cle;
+    test_La_Donnee;
+    test_Vider;
+    Tester_Pour_chaque;
+    Tester_Pour_chaque_Somme_Si_Cle_Commence_Par_Q;
+    Tester_Pour_chaque_Somme_Len4_Erreur;
+
+
+
+end test_module_abr;

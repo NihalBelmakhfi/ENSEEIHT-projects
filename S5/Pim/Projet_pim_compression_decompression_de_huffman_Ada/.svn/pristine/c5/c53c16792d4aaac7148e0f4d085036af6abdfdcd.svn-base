@@ -1,0 +1,253 @@
+with SDA_Exceptions;         use SDA_Exceptions;
+with Ada.Text_IO;            use Ada.Text_IO;
+--with Ada.Integer_Text_IO;   use Ada.Integer_Text_IO;
+with Ada.Unchecked_Deallocation;
+
+package body ABR is
+
+	procedure Free is
+		new Ada.Unchecked_Deallocation (Object => T_Noeud, Name => T_ABR);
+
+
+	procedure Initialiser(Sda: out T_ABR) is
+	begin
+		sda := null;
+	end Initialiser;
+
+
+	function Est_Vide (Sda : T_ABR) return Boolean is
+	begin
+		return Sda = null;
+	end Est_Vide;
+
+	-- Est-ce que la Cle est utilisée dans la Sda
+	function Cle_Presente (Sda : in T_ABR ; Cle : in T_Cle) return Boolean is
+	begin
+		if Sda = null then
+			return False;
+		end if;
+		if Sda.all.Cle = Cle then
+			return True;
+		elsif "<"(Sda.all.Cle, Cle) then
+			return Cle_Presente(Sda.all.Sous_Arbre_Gauche,Cle);
+		else
+			return Cle_Presente(Sda.all.Sous_Arbre_Droit, Cle);
+		end if;
+	end Cle_Presente;
+
+
+
+	function Taille (Sda : in T_ABR) return Integer is
+	begin
+		if Sda = null then
+			return 0;
+		else
+			return 1  + Taille(Sda.all.Sous_Arbre_Gauche)+ Taille(Sda.all.Sous_Arbre_Droit);
+		end if;
+	end Taille;
+
+
+	procedure Enregistrer_Cle_Donnee (Sda : in out T_ABR ; Cle : in T_Cle ; Donnee : in T_Donnee) is
+	begin
+		if Sda = null then
+			Sda := new T_Noeud'(Cle,Donnee,null,null);
+		end if;
+		if Sda.all.Cle = Cle then
+			Sda.all.Donnee := Donnee;
+		elsif "<"(Sda.all.Cle, Cle) then
+			Enregistrer_Cle_Donnee (Sda.all.Sous_Arbre_Gauche, Cle, Donnee);
+		else
+			Enregistrer_Cle_Donnee (Sda.all.Sous_Arbre_Droit, Cle, Donnee);
+		end if;
+	end Enregistrer_Cle_Donnee;
+
+	procedure Enregistrer_Cle(Sda : in out T_ABR ; Cle : in T_Cle ) is
+	begin
+		if Sda = null then
+			Sda := new T_Noeud;
+		end if;
+		Sda.all.Cle := Cle;
+	end Enregistrer_Cle;
+
+	procedure Enregistrer_abrg_abrd (Sda : in out T_ABR; Sag : in T_ABR; Sad : in T_ABR) is
+	begin
+		if Sda = null then
+			raise Empty_Tree_Exception;
+		end if;
+		Sda.all.Sous_Arbre_Gauche := Sag;
+		Sda.all.Sous_Arbre_Droit := Sad;
+
+	end;
+
+
+	function La_Donnee (Sda : in T_ABR; Cle : in T_Cle) return T_Donnee is
+	begin
+		if Cle = Sda.all.Cle then
+			null;
+		end if;
+		return Sda.all.Donnee;
+	end La_Donnee;
+
+	function SAG (Sda : in T_ABR) return T_ABR is
+	begin
+		return Sda.all.Sous_Arbre_Gauche;
+	end SAG;
+
+	function SAD (Sda : in T_ABR) return T_ABR is
+	begin
+		return Sda.all.Sous_Arbre_Droit;
+	end SAD;
+
+
+	procedure Supprimer (Sda : in out T_ABR ; Cle : in T_Cle) is
+	begin
+		if Sda = null then
+			raise Cle_Absente_Exception;
+		end if;
+		if Sda.all.Cle = Cle then
+			Free(Sda);
+		elsif "<"(Sda.all.Cle, Cle) then
+			Supprimer (Sda.all.Sous_Arbre_Gauche, Cle);
+		else
+			Supprimer(Sda.all.Sous_Arbre_Droit, Cle);
+		end if;
+	end Supprimer;
+
+
+	procedure Vider (Sda : in out T_ABR) is
+	begin
+		if Sda /= null then
+			Vider(Sda.all.Sous_Arbre_Gauche);
+			Vider(Sda.all.Sous_Arbre_Droit);
+			Free(Sda);
+		end if;
+
+		exception
+		when others => pragma Assert (False);
+	end Vider;
+
+	function Est_Feuille (Sda : in T_ABR) return Boolean is
+	begin
+		return Est_Vide(Sda.all.Sous_Arbre_Gauche) and Est_Vide(Sda.all.Sous_Arbre_Droit);
+	end Est_Feuille;
+
+
+
+	procedure Pour_Chaque (Sda : in T_ABR ; Suite : in out Unbounded_String) is
+		s1 : Unbounded_String;
+		s2 : Unbounded_String;
+		zero : constant Unbounded_String := To_Unbounded_String("0");
+		one : constant Unbounded_String := To_Unbounded_String("1");
+	begin
+		if Est_Feuille(Sda) then
+			Traiter(Sda.all.Cle, Sda.all.Donnee);
+			put(" ");
+			Put(To_String(Suite));
+			New_Line;
+		else
+			s1 := Suite & zero;
+			Pour_Chaque(Sda.all.Sous_Arbre_Gauche, s1);
+			Traiter(Sda.all.Cle, Sda.all.Donnee);
+			s2 := Suite & one;
+			Pour_Chaque(Sda.all.Sous_Arbre_Droit, s2);
+		end if;
+
+	end Pour_Chaque;
+
+	procedure Affichage_Huffman (Sda : in T_ABR ; Suite : in out Unbounded_String) is
+		s1 : Unbounded_String;
+		s2 : Unbounded_String;
+		zero : constant Unbounded_String := To_Unbounded_String("0");
+		one : constant Unbounded_String := To_Unbounded_String("1");
+		space : Unbounded_String := To_Unbounded_String("");
+		s : Integer;
+	begin
+		s := Length(Suite);
+
+		for i in 1..s loop
+			space := space & To_Unbounded_String("  |         ");
+		end loop;
+
+
+		if Est_Feuille(Sda) then
+			Traiter_Noeud(Sda.all.Cle, Sda.all.Donnee);
+				New_Line;
+		else
+			Traiter_Noeud(Sda.all.Cle, Sda.all.Donnee);
+			New_Line;
+
+			s1 := Suite & zero;
+			put(""&To_String(Space));
+			put("  \--"&To_String(zero)&"--");
+			Affichage_Huffman(Sda.all.Sous_Arbre_Gauche, s1);
+			s2 := Suite & one;
+			put(""&To_String(Space));
+			put("  \--"&To_String(one)&"--");
+			Affichage_Huffman(Sda.all.Sous_Arbre_Droit, s2);
+
+		end if;
+
+	end Affichage_Huffman;
+
+	procedure Table_Huffman (Sda : in T_ABR; lca : in out LCA_Char_String.T_LCA; Suite : in out Unbounded_String) is
+		s1 : Unbounded_String;
+		s2 : Unbounded_String;
+		zero : constant Unbounded_String := To_Unbounded_String("0");
+		one : constant Unbounded_String := To_Unbounded_String("1");
+	begin
+		if Est_Feuille(Sda) then
+			Enregistrer(lca, Sda.all.Donnee, suite);
+		else
+			s1 := Suite & zero;
+			Table_Huffman(Sda.all.Sous_Arbre_Gauche, lca, s1);
+			s2 := Suite & one;
+			Table_Huffman(Sda.all.Sous_Arbre_Droit, lca, s2);
+		end if;
+
+	end Table_Huffman;
+
+	procedure Code_Huffman(Sda : in T_ABR; Suite : in out Unbounded_String) is
+		zero : constant Unbounded_String := To_Unbounded_String("0");
+		one : constant Unbounded_String := To_Unbounded_String("1");
+	begin
+		if Est_Feuille(Sda) then
+			Suite := Suite & one;
+		else
+			Suite := Suite & zero;
+			Code_Huffman(Sda.all.Sous_Arbre_Gauche, Suite);
+			Code_Huffman(Sda.all.Sous_Arbre_Droit, Suite);
+		end if;
+	end Code_Huffman;
+
+	procedure ReConsAbr(Sda : in out T_ABR; n : in out Integer; tab_Char : in LCA_Integer_String.T_LCA; Suite : in out Unbounded_String; Cle : in T_Cle ; Donnee : in T_Donnee) is
+		bit : Character;
+		g : T_ABR := null;
+		d : T_ABR := null;
+	begin
+
+		bit := Element(Suite, 1);
+		Suite := Unbounded_Slice(Suite, 2, length(Suite));
+		if Sda = null then
+			Sda := new T_Noeud'(Cle,Donnee,null,null);
+		end if;
+		if bit = '1' then
+			Sda.all.Sous_Arbre_Gauche := Null;
+			Sda.all.Sous_Arbre_Droit := Null;
+			Sda.all.Donnee := LCA_Integer_String.La_Donnee(tab_Char, n);
+			n := n + 1;
+		else
+			g := new T_Noeud'(Cle,Donnee,null,null);
+			Sda.all.Sous_Arbre_Gauche := g;
+			ReConsAbr(g, n, tab_Char, Suite, Cle, Donnee);
+
+			d := new T_Noeud'(Cle,Donnee,null,null);
+			Sda.all.Sous_Arbre_Droit := d;
+			ReConsAbr(d, n, tab_Char, Suite, Cle, Donnee);
+		end if;
+
+		exception
+		 when others => pragma Assert (False);
+	end ReConsAbr;
+
+
+end ABR;

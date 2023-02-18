@@ -1,0 +1,1 @@
+test_module_abr.adb:106:15: warning: procedure "tester_SAG_SAD" is not referenced [-gnatwu]

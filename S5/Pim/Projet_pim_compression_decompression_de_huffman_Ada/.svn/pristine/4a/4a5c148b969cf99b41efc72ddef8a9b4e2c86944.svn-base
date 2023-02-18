@@ -1,0 +1,87 @@
+\documentclass[frenchb]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+%Pour utilisation sous unix
+%\usepackage[utf8]{inputenc}
+%\usepackage[utf8x]{inputenc}
+\usepackage{a4wide}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{babel}
+
+\begin{document}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=5cm]{inp_n7.png}
+\end{figure}
+
+\title{\vspace{4cm} \textbf{Projet:Codage de Huffman}}
+\author{BELMAKHFI Nihal\\KIEGAIN DJOKO Yvan Charles }
+\date{\vspace{7cm} Département Sciences du Numérique - Première année \\
+2021-2022 }
+
+\maketitle
+
+\newpage
+\tableofcontents
+\listoffigures
+
+\newpage
+\section{Introduction}
+\Large L'objectif de ce projet était la compression et la décompression d'un fichier texte en utilisant un système de codage très connu qui est le codage de HUFFMAN et pour cela nous avons décider de nous reposer sur deux modules qui sont:
+\\- Un module \textbf{LCA} (liste chainées)
+\\- Un module \textbf{ABR\_HUFFMAN} (arbre binaires) \
+
+\section{Raffinages}
+
+
+
+    \subsection{Raffinage de COMPRESSER}
+    
+
+    \subsection{Raffinage de DECOMPRESSER}
+    
+         
+
+\section{Modules}
+Pour réaliser la compression et la décompression de notre fichier text par la méthode de huffman on s'est servi de deux structures de données que nous avons considéré les mieux adapté à la réalisation de notre projet
+	
+    \subsection{Module LCA}
+    Le module LCA a été conçu pour fonctionner comme un dictionnaire; il associe à chaque clé une donnée. 
+    Dans notre projet, on l'a utiliser à plusieurs reprise par exemple lorsque nous devions initier une liste qui à chaque caractère lui associe le fréquence correspondant, mais également pour générer une liste qui à chaque caractère lui associe son codage dans l'arbre d'huffman, nous permettant d'une part d'afficher cette table et d'autres part de traduire les caractères de notre fichier initiales en leur correspondance dans le fichier compressé. la petite spécificité de notre LCA est qu'elle possède une procédure qui permet d'enregistrer les éléments de façon trier par rapport à une fonction de tri qui est fourni au package.
+    
+    \begin{figure}[ht!]
+    				\centering
+                \includegraphics[scale=0.4]{lcainit.png} 
+				\end{figure}
+    
+    
+    
+     \subsection{Module ABR\_HUFFMAN}
+     Le module ABR\_HUFFMAN a été conçu pour fonctionner comme un arbre binaire; chaque n?ud est composé d'une clé et une donnée, et chacun des n?uds est susceptible d'avoir un arbre gauche et un arbre droit. les n?uds sont enregistrés dans l'arbre à gauche ou à droite suivant que leur clé sois plus petite ou \textit{égale} à la clé de l'arbre en lui même; ce \textit{égale} nous autorise en enregistrer dans l'arbre des arbres aux clés identiques. 
+     C
+     
+     
+     
+\section{Programme principale}     
+	\subsection{COMPRESSION}
+
+	\subsection{DECOMPRESSION}
+
+
+\section{Expérience personnelle}    
+    \subsection{Difficultés rencontrées}
+\subsubsection{1er problème} \label{filtrage}
+  On a pensé à utiliser une LCA où les clés etaient des féquences et les données étaient des caractères(les caractères composant notre fichier text).
+  Pourtant, on a remarqué que les clés ne seront pas uniques vu que deux caractères différents peuvent avoir même fréquence. Ceci étant en contradiction avec la propriété d'unicité des clés.\\
+ 
+  Ensuite pour reméder à ce problème, on a pensé à inverser les types les clès et les données.Mais dans ce cas, la logique de l'arbre ne serait plus respecté car par exemple pour un noeud parent de deux feuilles il ne serait pas identifiables dans l'arbre par sa clé mais plutôt par sa donnée.\\
+  
+  Mais au final on a decidé de rester sur l'idée de base en considérant que notre arbre ne vérifie tout simplement pas la propriété d'unicité des clés, tout ceci nous ayant fais perdre du temps car au début nous n'avons pas voulu être plus flexible au niveau de la conception de notre arbre.
+\subsubsection{2ème problème} \label{filtrage}
+
+\section{Conclusion}    
+   Grosso modo, ce projet nous a ajouté beaucoup d'expérience.
+\end{document} 

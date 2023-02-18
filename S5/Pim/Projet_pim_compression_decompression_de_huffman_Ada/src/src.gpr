@@ -1,0 +1,9 @@
+project Src is
+
+   for Source_Dirs use (".");
+   for Object_Dir use "obj";
+   for Main use ("abr_huffman.adb", "abr_huffman.ads", "compresser.adb", "decompresser.adb", "lca.adb", "lca.ads", "main.adb", "sda_exceptions.ads", "test_module_abr.adb", "test_module_lca.adb");
+   for Source_Files use ("abr_huffman.adb", "abr_huffman.ads", "compresser.adb", "decompresser.adb", "lca.adb", "lca.ads", "main.adb", "sda_exceptions.ads", "test_module_abr.adb", "test_module_lca.adb");
+
+end Src;
+

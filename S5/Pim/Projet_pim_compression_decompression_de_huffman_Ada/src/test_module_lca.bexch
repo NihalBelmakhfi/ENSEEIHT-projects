@@ -1,0 +1,21 @@
+[GENERATED OBJECT FILE]
+b__test_module_lca.o
+[PROJECT FILES]
+/home/nbelmakh/1A/pim/CD09/src/src.gpr
+20220107194507 579e2bf08a8dcdf52e1053c3615d2a2e
+[BOUND OBJECT FILES]
+/home/nbelmakh/1A/pim/CD09/src/sda_exceptions.o
+/home/nbelmakh/1A/pim/CD09/src/lca.o
+/home/nbelmakh/1A/pim/CD09/src/test_module_lca.o
+[GENERATED SOURCE FILES]
+b__test_module_lca.ads
+b__test_module_lca.adb
+b__test_module_lca.ali
+[RESULTING OPTIONS]
+-L/home/nbelmakh/1A/pim/CD09/src/
+-L/home/nbelmakh/1A/pim/CD09/src/
+-L/mnt/n7fs/ens/tp_cregut/GNAT/2021/lib/gcc/x86_64-pc-linux-gnu/10.3.1/adalib/
+-static
+-static-libgcc
+/mnt/n7fs/ens/tp_cregut/GNAT/2021/lib/gcc/x86_64-pc-linux-gnu/10.3.1/adalib/libgnat.a
+-ldl

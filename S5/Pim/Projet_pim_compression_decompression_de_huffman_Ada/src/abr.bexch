@@ -1,0 +1,23 @@
+[MAPPING FILE]
+/tmp/GNAT-TEMP-000003.TMP
+[TOOLCHAIN VERSION]
+ada
+GNAT 2021
+[MAIN BASE NAME]
+abr
+[COMPILER PATH]
+/mnt/n7fs/ens/tp_cregut/GNAT/2021/bin/gcc
+[COMPILER LEADING SWITCHES]
+-c
+-x
+ada
+-gnatA
+[MAIN DEPENDENCY FILE]
+/home/nbelmakh/1A/pim/CD09/src/abr.ali
+[DEPENDENCY FILES]
+[BINDING OPTIONS]
+gnatbind_prefix=
+-E
+[PROJECT FILES]
+/home/nbelmakh/1A/pim/CD09/src/src.gpr
+20220104101627 756120fe128a3573ed1944c10b88180a

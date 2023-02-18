@@ -1,0 +1,125 @@
+\documentclass[frenchb]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+%Pour utilisation sous unix
+%\usepackage[utf8]{inputenc}
+%\usepackage[utf8x]{inputenc}
+\usepackage{a4wide}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{babel}
+
+\begin{document}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=5cm]{inp_n7.png}
+\end{figure}
+
+\title{\vspace{4cm} \textbf{Simulation d'une transmission au format DVB-RCS
+sous MatLab}}
+\author{MOUTAHIR Jed\\KIEGAIN DJOKO Yvan Charles }
+\date{\vspace{7cm} Département Sciences du Numérique - Première année \\
+2021-2022 }
+
+\maketitle
+
+\newpage
+\tableofcontents
+\listoffigures
+
+\newpage
+\section{Introduction}
+L'objectif de ce projet était la compression et la décompression d'un fichier text en utilisant le codage de HUFFMAN et nous avons décider de nous reposer sur deux modules:
+\\- Un module lca (de liste chainées)
+\\- Un module abr (d'arbres)
+
+\section{Raffinages}
+
+
+
+    \subsection{Raffinage de COMPRESSER}
+    La trame MF-TDMA est composée de $2$ porteuses, $f_{p_1}=0$ kHz et $f_{p_2}=46$ kHz, contenant chacune $5$ timeslots de durées $T=40$ ms. La fréquence d'échantillonnage est fixée à $128$ kHz. Les deux utilisateurs vont accéder au système en utilisant la trame de la manière suivante :
+        \begin{itemize}
+            \item L'utilisateur n° $1$ exploite le $2^{ème}$ timeslot de la porteuse n° $1$ ($f_{p_1}$).
+            \item L'utilisateur n° $2$ exploite le $5^{ème}$ timeslot de la porteuse n° $2$ ($f_{p_2}$).
+        \end{itemize}
+
+    Le canal de transmission considéré sera à bruit additif blanc et Gaussien (canal AWGN : Additive White Gaussian Noise). La puissance du bruit à ajouter devra être déduite du rapport signal sur bruit (SNR : Signal to Noise Ratio) souhaité donné en dB.
+
+    \subsection{Raffinage de DECOMPRESSER}
+    Le signal MF-TDMA non bruité peut s'écrire de la manière suivante :
+    \Large
+        $$
+        x(t)=m_1(t) \cos\left(2 \pi f_1 t + \phi_1\right) + m_2(t) \cos\left(2 \pi f_2 t + \phi_2\right)
+        $$\
+        \subsubsection{Calcul de la densité spectrale de puissance} \label{Calcul_DSP}
+                    \Large
+
+		$$
+        S_x(f)=| M_1(f)* [ \delta(f-f_{p1}) + \delta(f+f_{p1}) ] + M_2(f)* [ \delta(f-f_{p2}) + \delta(f+f_{p2}) ]  |^2
+        $$
+        $$
+		S_x(f) = | M_1(f-f_{p1}) +M_1(f+f_{p1}) + M_2(f-f_{p2}) + M_2(f+f_{p2})  |^2
+		$$
+		$$
+		S_x(f) = |M_1(f-f_{p1})|^2 + |M_1(f+f_{p1})|^2 + |M_2(f-f_{p2})|^2 + |M_2(f+f_{p2})|^2
+		$$
+        Or,
+        $$
+        S_{m1}(f)=| M_1(f) |^2
+        $$
+        et
+        $$
+        S_{m2}(f)=| M_2(f) |^2
+        $$
+        Donc,
+        $$
+		S_x(f) = S_{m1}(f-f_{p1}) + S_{m1}(f+f_{p1}) + S_{m2}(f-f_{p2}) + S_{m2}(f+f_{p2})
+		$$
+		\
+\subsubsection{Filtrage} \label{filtrage}
+            On retrouve bien le slot 2 conservé et 5 réduit après le filtrage par passe bas. De même, on retrouve bien le slot 5 conservé et 2 réduit après le filtrage par passe haut.\\
+            Tracés des signaux après filtrage et original :
+            \begin{figure}[ht!]
+    				\centering
+                \includegraphics[scale=0.3]{avantapresfiltrage.jpg} 
+				\end{figure}
+
+   
+        
+         
+
+\section{Modules}
+Pour réaliser la compression et la décompression de notre fichier text par la méthode de huffman on s'est servi de deux modules 
+	
+    \subsection{Module LCA}
+    Le module LCA a été conçu pour fonctionner comme un dictionnaire; il associe à chaque clé une donnée. Dans notre projet, on l'a utiliser pour associer à chaque caractère la fréquence correspondante.
+    
+    
+    
+     \subsection{Module ABR}
+     Le module ABR a été conçu pour fonctionner comme un arbre; chaque noeud est composé d'une clé et une donnée, et chacun des noeuds est susceptible d'avoir un arbre gauche et un arbre droit.
+     
+     
+     
+\section{Programme principale}     
+     
+
+
+
+\section{Expérience personnelle}    
+    \subsection{Etapes de codages}
+\subsubsection{1er problème} \label{filtrage}
+  On a pensé à utiliser une LCA où les clés etaient des féquences et les données étaient des caractères(les caractères composant notre fichier text).
+  Pourtant, on a remarqué que les clés ne seront pas uniques vu que deux caractères différents peuvent avoir même fréquence. Ceci étant en contradiction avec la propriété d'unicité des clés.\\
+ 
+  Ensuite pour reméder à ce problème, on a pensé à inverser les types les clès et les données.Mais dans ce cas, la logique de l'arbre ne serait plus respecté car par exemple pour un noeud parent de deux feuilles il ne serait pas identifiables dans l'arbre par sa clé mais plutôt par sa donnée.\\
+  
+  Mais au final on a decidé de rester sur l'idée de base en considérant que notre arbre ne vérifie tout simplement pas la propriété d'unicité des clés, tout ceci nous ayant fais perdre du temps car au début nous n'avons pas voulu être plus flexible au niveau de la conception de notre arbre.
+\subsubsection{2ème problème} \label{filtrage}
+
+\section{Conclusion}    
+   Grosso modo, ce projet nous a ajouté beaucoup d'expérience.
+\end{document} 

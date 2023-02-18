@@ -1,0 +1,254 @@
+\documentclass[frenchb]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+%Pour utilisation sous unix
+%\usepackage[utf8]{inputenc}
+%\usepackage[utf8x]{inputenc}
+\usepackage{a4wide}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{babel}
+
+\begin{document}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=5cm]{inp_n7.png}
+\end{figure}
+
+\title{\vspace{4cm} \textbf{Projet:Codage de Huffman}}
+\author{KIEGAIN DJOKO Yvan Charles \\
+BELMAKHFI Nihal}
+\date{\vspace{7cm} Département Sciences du Numérique - Première année \\
+2021-2022 }
+
+\maketitle
+
+\newpage
+\tableofcontents
+\listoffigures
+
+\newpage
+\section{Introduction}
+\Large L'objectif de ce projet était la compression et la décompression d'un fichier texte en utilisant un système de codage très connu qui est le codage de HUFFMAN et pour cela nous avons décider de nous reposer sur deux modules qui sont:
+\\- Un module \textbf{LCA} (liste chainées)
+\\- Un module \textbf{ABR\_HUFFMAN} (arbre binaires) \
+
+\section{Raffinages}
+
+
+
+    \subsection{Raffinage de COMPRESSER}
+R0 : Compresser le fichier texte\\
+
+
+R1 : Comment Compresser le fichier à compresser ?   \\             
+Compter les fréquences de caractères    Fichier : in; char : in out;
+Créer une feuille pour chaque caractère    ListAbr : in out; Abr, freq, Char : in out;
+Générer l?arbre de Huffman            ListAbr : in out; Abr,abr\_g,abr\_d : in out        
+Générer le code de l arbre d?huffman        CodeHuffman : in out; Abr : in 
+Générer le fichier compresser                \\
+                                
+R2 : Comment Compter les fréquences de caractères ?\\
+    Tanque non fin du fichier à compresser Fichier faire
+        lire un caractère char;
+        si Char dans la liste freq
+            freq(Char) = freq(Char) + 1
+        sinon
+            freq(Char) = 0
+        finsi
+    fin tanque\\
+
+R2 : comment Créer une feuille pour chaque caractère ?\\
+    Creer une liste listAbr qui à chaque fréquence dans freq associe un arbre\\
+    pour chaque Char dans freq\\
+        creer un arbre Abr avec Clé = freq(Char) et Donnée = Char\\
+        ajouter Abr dans listAbr\_
+    fin pour\\
+
+R2 : Comment Générer larbre de Huffman ?\\
+    Tant Que length(listAbr) \/= 1\\
+        abr\_g = Rechercher\_minimum(listAbr)\\
+        abr\_d = Rechercher\_2ème\_minimum(listAbr)\\
+        creer un arbre Abr avec Donnee = abr\_g.Donnee + abr\_d.Donnee\\
+        Abr.arbre\_gauche = abr\_g\\
+        Abr.arbre\_droit = abr\_d\\
+        Ajouter Abr dans listAbr\\
+        Supprimer abr\_g et abr\_d dans listAbr\\
+    Fin Tant Que\\
+
+R2 : Comment Générer le code de l arbre d huffman ?\\
+    CodeHuffman -> Chaine de Caractère de vide\\
+    Si Abr est une Feuille alors\\
+        Ajouter 1 à CodeHuffman\\
+    Sinon\\
+        Ajouter 0 à CodeHuffman\\
+        Générer le Code de L arbre D Huffman avec en entrée fils Gauche de Abr - -appel récursif\\
+        Générer le Code de L arbre D Huffman avec en entrée fils Droit de Abr  - -appel récursif\\
+
+R2 : Comment Générer le fichier Compresser ?\\
+    Ecrire chaque caractère présent dans freq dans le fichier compresse Fichier\_Compresse\\
+    SuiteBit -> Chaine de Caractère vide\\
+    Ajouter le code d Huffman dans \\
+    Lire un caractère dans le fichier \\
+    Retrouver le code d Huffman de ce caractère\\
+    Ecrire le code d Huffman du caractère dans le fichier compresser\\
+
+
+
+
+
+
+    \subsection{Raffinage de DECOMPRESSER}
+    
+    R0 : Décompresser le fichier binaire\\
+
+R1 : comment Décompresser le fichier binaire?\\
+
+retrouver tous les caractères du texte          open\_file : File  in,\\
+liste\_caractere : liste out;\\
+posCaracTerminal : entier out;\\
+S, S\_Next : T\_Octet in out; \\
+
+reconstruire l arbre d huffman            nombreDe1 : entier in,\\
+Suite\_de\_bit , bit : chaine de caractere in out;\\
+liste\_caractere : liste in;\\
+open\_file : Stream\_Access out;\\
+
+reconstruire le texte originale                caractere,suite\_de\_bit : chaine\\
+de caractere in out;\\
+caractere\_terminal : chaine de\\
+caractere in;\\
+open\_file : Stream\_Access out;\\
+            
+
+R2 : comment Retrouver tous les caractères du texte ?\\
+
+    S -> lire un octet dans le fichier compresser \\
+S\_Next -> lire un octet dans le fichier compresser \\   
+
+Répéter jusqu à S = S\_Next\\
+
+    S -> lire un octet dans le fichier compresser\\
+    S\_Next -> lire l octet suivant dans le fichier compresser\\
+    Enregistrer le caractère  associé à l octet S dans liste\_caractere\\
+
+Fin répéter\\
+
+
+R2 : comment Reconstruire l arbre d huffman?\\
+    lire un bit B dans le fichier compresser\\
+    si B = 1 alors\\
+        Mettre fils gauche et droit de Abr Null\\
+         Donnée de Abr -> le caractère dans liste\_caractère.. 
+..avec pour clé le nb1\\
+        nb1 -> nb1 + 1  - - le nombre de 1 déja rencontré\\
+    sinon\\
+        creer un arbre abr\_g\\
+        Donnez en fils gauche de Abr abr\_g\\
+        Reconstruire l arbre d?Huffman avec abr\_g en entrée - -appel récursif\\
+creer un arbre abr\_d\\
+        Donnez en fils droit de Abr abr\_d\\
+        Reconstruire l arbre d Huffman avec abr\_d en entrée - -appel récursif\\
+    finsi\\
+    
+
+R2 : comment Reconstruire le texte originale ?
+    Abr -> racine de l arbre reconstitué
+Tant que Donnée de Abr /= caractere\_terminal faire
+        Si Abr est une feuille
+            écrire la donnée de Abr en octet dans le fichier décompressé
+Abr -> racine de l arbre reconstitué
+Sinon
+lire un bit B dans le fichier compressé
+si B = 1 alors
+Abr -> Fils Droit de Abr
+sinon
+Abr -> Fils gauche de Abr 
+    Fin tant que 
+
+
+    
+         
+
+\section{Modules}
+Pour réaliser la compression et la décompression de notre fichier text par la méthode de huffman on s'est servi de deux structures de données que nous avons considéré les mieux adapté à la réalisation de notre projet
+	
+    \subsection{Module LCA}
+    Le module LCA a été conçu pour fonctionner comme un dictionnaire; il associe à chaque clé une donnée. 
+    Dans notre projet, on l'a utiliser à plusieurs reprise par exemple lorsque nous devions initier une liste qui à chaque caractère lui associe le fréquence correspondant, mais également pour générer une liste qui à chaque caractère lui associe son codage dans l'arbre d'huffman, nous permettant d'une part d'afficher cette table et d'autres part de traduire les caractères de notre fichier initiales en leur correspondance dans le fichier compressé. la petite spécificité de notre LCA est qu'elle possède une procédure qui permet d'enregistrer les éléments de façon trier par rapport à une fonction de tri qui est fourni au package.
+    
+    \begin{figure}[ht!]
+    				\centering
+                \includegraphics[scale=0.4]{lcainit.png} 
+				\end{figure}
+    
+    
+    
+     \subsection{Module ABR\_HUFFMAN}
+     Le module ABR\_HUFFMAN a été conçu pour fonctionner comme un arbre binaire; chaque noeud est composé d'une clé et une donnée, et chacun des noeuds est susceptible d'avoir un arbre gauche et un arbre droit. les noeuds sont enregistrés dans l'arbre à gauche ou à droite suivant que leur clé sois plus petite ou \textit{égale} à la clé de l'arbre en lui même; ce \textit{égale} nous autorise en enregistrer dans l'arbre des arbres aux clés identiques. 
+     Dans ce dernier nous implantons hors mis les fonctions classique de manipulation de l'arbre comme accesseur, mutateur, etc..; de nombreuses procédures propres aux codage d'huffman qui sont :\\
+
+\begin{flushleft}
+- \textbf{Affichage Huffman} : qui nous permet d'afficher l'arbre d'huffman sous une forme arborescente.\\- \textbf{Table\_Huffman} : qui nous donne en sortie une LCA qui associe à chaque Clé sa représentation dans l'arbre d'Huffman.\\- \textbf{Code\_Huffman} : qui nous fournis le code de l'arbre Huffman nécessaire à sa reconstruction .\\- \textbf{ReConsAbr} : qui permet de reconstruire un arbre d'huffman à partir de son code généré par la procédure précédente.\\
+\end{flushleft}
+
+     \subsection{Module de Test LCA et ABR}
+Pour nous assurer de la fonctionnalité des fonctions et procédures unitaires utilisées dans les modules LCA et ABR\_HUFFMAN, on les a testé dans deux modules tests appelé test\_module\_lca.adb et test\_module\_abr.adb     
+
+\section{Programme principale}    
+Nous Présentons maintenant ce qui aura été un peu le but et l'accomplissement de ce projet l'implémentation de Compression et Decompression.
+	\subsection{COMPRESSION}
+
+La compression dans notre cas de fichiers texte grace à l'arbre d'huffman commence par l'analyse du fichier en question afin d'en extraine une LCA dans laquelle à chaque caractère du texte est associé son nombre d'apparitions dans le texte (fréquence).\\
+	Ensuite à partir de cette liste nous créeons encore une LCA mais qui cette fois associe à chaque fréquence une feuille d'arbre ayant pour couple clé-donnée la fréquence et le caractère cité ci-haut. ensuite par une processus itératif d'extraction de deux éléments minimaux de la LCA suivis de la création d'un arbre donc la fréquence est la somme des deux extraits et lui attribuant en fils gauche et droit ces deux derniers. Sachant que l'extracton du minimaux de la LCA est facilité par le faite que nous l'ayons enregistrer de façon trier directement grace àa la procedure enregistrer\_trie cité dans le module de LCA, nous demanant juste à retirer le premier élément à chaque fois.\\\\
+	Une fois notre arbre D'Huffman généré nous en déduisant sa table d'Huffman grace à la procédure  \textbf{Table\_Huffman}, ainsi que son codage d'huffman obtenu par parcours infixe de ce dernier grace à la procédure  \textbf{Code\_Huffman} toutes deux implémenter dans le module ABR\_Huffman.
+Toute les cartes en main pour rédiger notre fichier compresser, nous décidons tout d'abord d'écrire première dans ce fichier chauqe octet représentant nos caractères en doublons le dernier pour marquer la fin de cette suite de caractères. \\\\
+	Nous décidons ensuite pour le reste d'opter pour une manipulation de Unbounded\_String(Chaines de caractères à taille variables) en insérant dans cette dernière tout d'abord le code huffman de notre arbre suivis de chacun des caractères du texte biensur remplacé par son codage Huffmann et le caractère terminal que nous avons choisi. Enfin nous finissons par lire cette chaine de caractères (de 0 et   de 1) par intervalle de 8 caractères représentant un Octet que après traitement nous écrivons dans notre fichier compressé jusqu'à ce qu'il ne reste plus qu'un chiffre non multiple de 8 de caractères saisissant ces derniers et les complétent par des 0 pour ecrire le dernier Octet de notre fichier. Voici notre fichier compresser généré. 
+	
+		    \begin{figure}[ht!]
+    				\centering
+                \includegraphics[scale=0.4]{compression1.png} 
+                \includegraphics[scale=0.4]{compression2.png}
+                 \includegraphics[scale=0.4]{compression3.png}
+                 \includegraphics[scale=0.4]{compression4.png}
+				\end{figure}
+	
+	\subsubsection{Terminal}
+	Nous avons implenter la manipulation de notre progamme via un terminal permettant non seulement de compresser et decompresser celui ci mais aussi de nous afficher la table de huffman et la représentation de l'arbre utilisé lors de ces processus je vous en donne un aperçu ci-dessous:
+	
+	    \begin{figure}[ht!]
+    				\centering
+                \includegraphics[scale=0.4]{tableabrhuffman.png} 
+				\end{figure}
+
+	\subsection{DECOMPRESSION}
+
+S'agissant de la décompression,la première chose à faire ici est de récupérer les caractères qui vont constituer notre texte lisant les octects du fichiers compresser un à un jusqu'à remarquer un doublon d'octet qui signale que nous avons lu le dernier caractère nous stockons ces derniers dans une LCA qui accocie un entier à chaque caractère entier correspondant à sa position dans l'arbre d'Huffman initiale.\\
+Ensuite adoptant la meme méthode de manipulation de Unbounded\_String que dans compression nous lisons à la suite chacun des octets jusqu'à la fin du fichier et pour chacun de ces octets nous le décomposons en bit que nous insérons au fur et à mesure dans la chaine précédente.
+Viens le moment de reconstruire notre arbre initiale en lisant les bits et en créeant des fils gauche et droit au fur et à mesure de la lecture de bits et insérant les caractères dans l'arbre à chaque rencontre d'un 1 le caractère choisi dans la LCA cité ci-haut suivant le nombre de 1 déja rencontré dans la lecture auparavant. cette algorithme étant selon notre constat optiminal il s'arretera après avoir entièrement reconstruit l'arbre.\\
+	L'arbre une fois reconstruit plus qu'à reconstitué le texte initial en lisant un à un pour le reste de bit de notre Unboubded\_String et en vérifiant à chaque fois s'il n'existe pas un caractère correspondant à ce dernier. L'algorithme s'arrete lorsqu'il rencontre le caractère terminal choisi. Voilà notre Fichier texte initiale reconstruit à partir du fichier compressé au bit près.
+    
+    		\begin{figure}[ht!]
+    				\centering
+                \includegraphics[scale=0.4]{decompression1.png} 
+                \includegraphics[scale=0.4]{decompression2.png}
+                 \includegraphics[scale=0.4]{decompression3.png}
+				\end{figure}
+				
+\section{Difficultés rencontrées}
+	\subsection{1er problème} \label{filtrage}
+  On a pensé à utiliser une LCA où les clés etaient des féquences et les données étaient des caractères(les caractères composant notre fichier text).
+  Pourtant, on a remarqué que les clés ne seront pas uniques vu que deux caractères différents peuvent avoir même fréquence. Ceci étant en contradiction avec la propriété d'unicité des clés.\\
+ 
+  Ensuite pour reméder à ce problème, on a pensé à inverser les types les clès et les données.Mais dans ce cas, la logique de l'arbre ne serait plus respecté car par exemple pour un noeud parent de deux feuilles il ne serait pas identifiables dans l'arbre par sa clé mais plutôt par sa donnée.\\
+  
+  Mais au final on a decidé de rester sur l'idée de base en considérant que notre arbre ne vérifie tout simplement pas la propriété d'unicité des clés, tout ceci nous ayant fais perdre du temps car au début nous n'avons pas voulu être plus flexible au niveau de la conception de notre arbre.
+	\subsection{2ème problème} 
+	Le second problème que nous avons rencontré durant notre implémentation à été la manipulation des Octets plus précisement notre capacité les bits dans le fichier les uns après les autres.\\
+	Et après de nombreuses réflexions, nous avons opter pour la manipulation d'un stucture beaucoup moins contrénuante qui est la chaines de caractères. Decidé de généralement faire passer les grandes suites d'octet de notre fichier qui ne devait cependant ne pas etre lu comme des octets mais comme bloc de 1,2,3 voir 4 bits et plus dans des unbounde\_String ce qui nous  grandement facilité la vie.
+
+\section{Conclusion}    
+  	Il en va de soi que ce projet a été des plus enrichissant pour nous, il nous a permis d'énormément apprendre sur le language ADA en quelques semaines mais d'en plus améliorer notre rigueur dans le travail, découvrir le travail d'équipe ainsi que ces avantages et ces inconvénients
+\end{document} 

@@ -1,0 +1,109 @@
+with Ada.Text_IO;           use Ada.Text_IO;
+with SDA_Exceptions; 		use SDA_Exceptions;
+
+	--! Les Unbounded_String ont une capacité variable, contrairement au String
+	--! pour lesquelles une capacité doit être fixée.test_La_Cell_Next
+with LCA;
+
+procedure Test_module_lca is
+	-- Afficher une  package ABR_String_Integer is
+
+	 package LCA_String_Integer is
+		new LCA (T_Cle => Integer, T_Donnee => character);
+    use LCA_String_Integer;
+
+ --on teste la fonction Est_Vide
+    procedure test_Est_Vide is
+        Sda : T_LCA;
+    begin
+        initialiser(Sda);
+        if Est_Vide(Sda) then
+            put("ok");
+            New_Line;
+        end if;
+    end test_Est_Vide;
+
+---------------------------------------------------------------------
+   procedure test_Taille_Enregistrer is
+            Sda : T_LCA;
+
+    begin
+           initialiser(Sda);
+           Enregistrer(Sda,1,'a');
+           Enregistrer(Sda,2,'b');
+           Enregistrer(Sda,3,'c');
+           pragma assert(Taille(sda)=3);
+           if Taille(Sda)=4 then
+            put("ok");
+            New_Line;
+           end if;
+    end test_Taille_Enregistrer;
+
+    -------------------------------------------------------------------
+    procedure test_supprimer_enregistrer_cle is
+        Sda : T_LCA;
+    begin
+        initialiser(Sda);
+        Enregistrer(Sda,1,'a');
+        Enregistrer(Sda,2,'b');
+        Enregistrer(Sda,3,'c');
+    Exception
+            when Cle_Absente_Exception => supprimer(Sda,2);
+            Put("ok");
+            New_Line;
+
+    end test_supprimer_enregistrer_cle;
+
+    ------------------------------------------------------------------
+    procedure test_Cle_Presente is
+        sda : T_LCA;
+    begin
+        initialiser(Sda);
+        Enregistrer(Sda,1,'a');
+        Enregistrer(Sda,2,'b');
+        Enregistrer(Sda,3,'c');
+        pragma Assert (Cle_Presente(Sda, 2));
+        pragma Assert (not Cle_Presente(Sda, 4));
+         if Cle_Presente(Sda, 2) and not Cle_Presente(Sda, 4) then
+            put("ok");
+            New_Line;
+         end if;
+    end test_Cle_Presente;
+
+    ------------------------------------------------------------------
+    procedure test_La_Paire is
+        sda : T_LCA;
+    begin
+        initialiser(Sda);
+        Enregistrer(Sda,1,'a');
+        pragma Assert(La_Paire(Sda).Cle =1 and La_Paire(Sda).Donnee ='a');
+        if La_Paire(Sda).Cle =1 and La_Paire(Sda).Donnee ='a' then
+            put("ok");
+            New_Line;
+        end if;
+    end test_La_Paire;
+
+    ----------------------------------------------------------------
+   procedure test_La_Cell_Next is
+       sda : T_LCA;
+       Pair : T_CD;
+   begin
+       initialiser(Sda);
+       Enregistrer(Sda,1,'a');
+       Enregistrer(Sda,2,'b');
+       Pair := La_Paire(La_Cell_Next(Sda));
+       pragma Assert(Pair.Cle = 2 and Pair.Donnee = 'b');
+       if Pair.Cle = 2 and Pair.Donnee = 'b' then
+            put("ok");
+            New_Line;
+      end if;
+   end test_La_Cell_Next;
+
+begin
+    test_Est_Vide;
+    test_Taille_Enregistrer;
+    test_supprimer_enregistrer_cle;
+     test_Cle_Presente;
+    test_La_Paire ;
+     test_La_Cell_Next;
+end Test_module_lca;

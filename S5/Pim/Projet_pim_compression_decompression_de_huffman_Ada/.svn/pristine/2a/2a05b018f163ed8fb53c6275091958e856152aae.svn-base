@@ -1,0 +1,19 @@
+project Src is
+
+   for Main use ("abr.adb", "abr.ads", "compresser.adb", "decompresser.adb", "lca.adb", "lca.ads", "main.adb", "sda_exceptions.ads", "test_abr.adb", "test_lca.adb", "test_module_abr.adb", "test_module_lca.adb");
+   for Source_Files use ("abr.adb", "abr.ads", "compresser.adb", "decompresser.adb", "lca.adb", "lca.ads", "main.adb", "sda_exceptions.ads", "test_abr.adb", "test_lca.adb", "test_module_abr.adb", "test_module_lca.adb");
+
+   package Builder is
+      for Default_Switches ("ada") use ("-s");
+   end Builder;
+
+   package Compiler is
+      for Default_Switches ("ada") use ("-gnatwa", "-gnata", "-g");
+   end Compiler;
+
+   package Binder is
+      for Default_Switches ("ada") use ("-E");
+   end Binder;
+
+end Src;
+

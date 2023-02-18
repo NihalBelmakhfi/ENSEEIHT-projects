@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<Locations >
+  <Project >
+    <file_marker column=" 5" line=" 83" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/lca.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 66" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/lca.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 93" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_lca.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_lca.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 15" line=" 106" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/test_module_abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/abr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/compresser.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/decompresser.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/lca.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/compresser.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 1" >
+      <vfs_project>/home/nbelmakh/1A/pim/CD09/src/src.gpr</vfs_project>
+      <vfs_file>/home/nbelmakh/1A/pim/CD09/src/decompresser.adb</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>

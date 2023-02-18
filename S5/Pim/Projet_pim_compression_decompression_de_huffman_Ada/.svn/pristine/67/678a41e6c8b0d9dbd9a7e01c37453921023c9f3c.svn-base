@@ -1,0 +1,130 @@
+with Ada.Text_IO;           use Ada.Text_IO;
+
+	--! Les Unbounded_String ont une capacité variable, contrairement au String
+	--! pour lesquelles une capacité doit être fixée.
+with ABR;
+
+procedure test_module_abr is
+    package ABR_String_Integer is
+		new ABR (T_Cle => Integer, T_Donnee => Character, "<" => "<");
+    use ABR_String_Integer;
+
+    --on teste la fonction Est_Vide
+    procedure test_Est_Vide is
+        Sda : T_ABR;
+    begin
+        initialiser(Sda);
+        if Est_Vide(Sda) then
+            put("ok");
+        end if;
+    end test_Est_Vide;
+
+                ----------------------------------------------
+    procedure test_Taille is
+            Sda: T_ABR;
+
+    begin
+           initialiser(Sda);
+           Enregistrer_Cle_Donnee(Sda,1,'a');
+           Enregistrer_Cle_Donnee(Sda,2,'b');
+           Enregistrer_Cle_Donnee(Sda,3,'c');
+           pragma assert(Taille(sda)=3);
+           if Taille(Sda)=3 then
+               put("ok");
+           end if;
+    end test_Taille;
+
+
+                 ----------------------------------------------
+    procedure test_Cle_Presente is
+        Sda : T_ABR;
+    Begin
+        initialiser(Sda);
+        Enregistrer_Cle_Donnee(Sda,1,'a');
+        Enregistrer_Cle_Donnee(Sda,2,'b');
+        Enregistrer_Cle_Donnee(Sda,3,'c');
+        if Cle_presente(Sda, 2) and not Cle_presente(Sda, 4) then
+            Put("ok");
+        end if;
+    end test_Cle_Presente;
+    -------------------------------------
+
+    procedure test_supprimer is
+        Sda : T_ABR;
+    begin
+        initialiser(Sda);
+        Enregistrer_Cle_Donnee(Sda,1,'a');
+        Enregistrer_Cle_Donnee(Sda,2,'b');
+        Enregistrer_Cle_Donnee(Sda,3,'c');
+        if Cle_presente(Sda, 2) and not Cle_presente(Sda, 4) then
+            Put("ok");
+        end if;
+    end test_supprimer;
+    --------------------------------------------------------
+    procedure test_La_Donnee is
+        Sda : T_ABR;
+
+    begin
+        initialiser(Sda);
+        Enregistrer_Cle_Donnee(Sda,1,'a');
+        pragma assert(La_Donnee(sda, 1) = 'a' );
+        if La_Donnee(sda, 1) = 'a' then
+            put("ok");
+       end if;
+    end test_La_Donnee;
+
+        ------------------------------------------------
+    procedure test_Vider is
+        Sda : T_ABR;
+
+    begin
+        initialiser(Sda);
+        Enregistrer_Cle_Donnee(Sda,1,'a');
+        Enregistrer_Cle_Donnee(Sda,2,'b');
+        Enregistrer_Cle_Donnee(Sda,3,'c');
+        vider(Sda);
+        if Est_Vide(Sda) then
+            put("ok");
+        end if;
+    end test_Vider;
+            -----------------------------------------------------
+    procedure tester_est_feuille is
+        Sda : T_ABR;
+
+    begin
+        initialiser(Sda);
+        Enregistrer_Cle_Donnee(Sda,1,'a');
+        Enregistrer_Cle_Donnee(Sda,2,'b');
+        Enregistrer_Cle_Donnee(Sda,3,'c');
+        pragma assert( Est_Feuille(SAG(Sda)) and Est_Feuille(SAD(Sda)) and not Est_Feuille(Sda));
+        if Est_Feuille(SAG(Sda)) and Est_Feuille(SAD(Sda)) and not Est_Feuille(Sda) then
+             put("ok");
+        end if;
+    end tester_est_feuille;
+
+    ---------------------------------------------
+    procedure tester_SAG_SAD is
+        Sda : T_ABR;
+    begin
+        initialiser(Sda);
+        Enregistrer_Cle_Donnee(Sda,2,'b');
+        Enregistrer_Cle_Donnee(Sda,1,'a');
+        Enregistrer_Cle_Donnee(Sda,3,'c');
+        pragma assert( La_Donnee(SAG(sda), 1) = 'a' and La_Donnee(SAG(sda),3) = 'c' );
+        if La_Donnee(SAG(sda),1) = 'a' and La_Donnee(SAG(sda),3) = 'c' then
+             put("ok");
+        end if;
+    end tester_SAG_SAD;
+    -------------------------------------------------
+
+
+ begin
+    test_Taille;
+    test_Est_Vide;
+    test_Cle_Presente;
+    test_supprimer;
+    test_La_Donnee;
+    test_Vider;
+    tester_est_feuille;
+
+end test_module_abr;

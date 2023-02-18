@@ -1,0 +1,16 @@
+\babel@toc {french}{}
+\contentsline {section}{\numberline {1}Introduction}{3}%
+\contentsline {section}{\numberline {2}Raffinages}{3}%
+\contentsline {subsection}{\numberline {2.1}Raffinage de COMPRESSER}{3}%
+\contentsline {subsection}{\numberline {2.2}Raffinage de DECOMPRESSER}{3}%
+\contentsline {subsubsection}{\numberline {2.2.1}Calcul de la densit\'e spectrale de puissance}{3}%
+\contentsline {subsubsection}{\numberline {2.2.2}Filtrage}{4}%
+\contentsline {section}{\numberline {3}Modules}{4}%
+\contentsline {subsection}{\numberline {3.1}Module LCA}{4}%
+\contentsline {subsection}{\numberline {3.2}Module ABR}{4}%
+\contentsline {section}{\numberline {4}Programme principale}{4}%
+\contentsline {section}{\numberline {5}Exp\'erience personnelle}{4}%
+\contentsline {subsection}{\numberline {5.1}Etapes de codages}{4}%
+\contentsline {subsubsection}{\numberline {5.1.1}1er probl\`eme}{4}%
+\contentsline {subsubsection}{\numberline {5.1.2}2\`eme probl\`eme}{5}%
+\contentsline {section}{\numberline {6}Conclusion}{5}%
