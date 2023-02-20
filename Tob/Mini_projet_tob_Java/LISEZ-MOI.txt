@@ -1,0 +1,41 @@
+Nom       : BELMAKHFI
+Prénom    : Nihal
+Groupe TP : C
+
+
+Consigne :  Ci-dessous, répondre à la place des « ... ».
+
+
+=====[ Temps ]==================================================================
+
+Temps passé sur la V1 : 4 heures 15 minutes
+Temps passé sur la V2 : ... heures ... minutes
+Pour la V2 on ne tiendra pas compte du temps passé sur la V1.
+Bien sûr, les temps renseignés ici ne sont pas pris en compte dans la notation.
+
+
+=====[ Questions ]==============================================================
+
+Indiquer la relation UML entre Cercle et le Point centre du cercle.
+-------------------------------------------------------------------
+
+la relation UML entre le Cercle et le Point centre du cercle est une relation de composition. En effet, un cercle se compose de plusieurs 
+points. Aussi, si la classe point est supprimée on n'aura plus de classe
+cercle
+
+
+Comment est réalisée l'exigence E18 ?
+-------------------------------------
+
+l'exigence E18 est réalisée par la visibilité donnée à centre, rayon et couleur: les attributs de la classe Cercle qui est bien 
+"privé". Ainsi, pour toute modification du rayon, diamètre, couleur, translation, on aura besoin des getters et setters.
+Aussi, on a utilisé une copie du centre avant de le retourner afin de le préserver et n'appliquer nos modifications que sur la copie.
+
+
+
+=====[ Explications ]===========================================================
+
+(Facultatif) Donner ici les explications supplémentaires utiles à la
+compréhension du travail rendu.
+
+...

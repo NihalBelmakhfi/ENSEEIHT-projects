@@ -1,0 +1,20 @@
+10c10
+< Xavier, combien d'allumettes ? Xavier prend 1 allumette.
+---
+> Xavier, combien d'allumettes ? Xavier prend 0 allumette.
+14c14
+< Xavier, combien d'allumettes ? Xavier prend 1 allumette.
+---
+> Xavier, combien d'allumettes ? Xavier prend -1 allumette.
+37c37
+< Impossible ! Nombre invalide : 4 (> 3)
+---
+> Impossible ! Nombre invalide : 4 (> 1)
+48c48
+< Xavier, combien d'allumettes ? Xavier prend 1 allumette.
+---
+> Xavier, combien d'allumettes ? Xavier prend 0 allumette.
+52c52
+< Xavier, combien d'allumettes ? Xavier prend 1 allumette.
+---
+> Xavier, combien d'allumettes ? Xavier prend -1 allumette.

@@ -1,0 +1,10 @@
+3c3,4
+< /** Exception qui indique que la configuration d'une partie est incorrecte.
+---
+> /**
+>  * Exception qui indique que la configuration d'une partie est incorrecte.
+9c10,11
+< 	/** Initaliser une ConfigurationException avec le message précisé.
+---
+> 	/**
+> 	 * Initaliser une ConfigurationException avec le message précisé.

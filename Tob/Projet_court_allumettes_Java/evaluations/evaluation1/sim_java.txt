@@ -1,0 +1,183 @@
+File allumettes/Arbitre.java: 556 tokens, 111 lines
+File allumettes/JeuReel.java: 99 tokens, 29 lines
+File allumettes/JeuMandataire.java: 61 tokens, 23 lines
+File allumettes/CoupInvalideException.java: 68 tokens, 39 lines (not NL-terminated)
+File allumettes/Joueur.java: 112 tokens, 56 lines
+File allumettes/OperationInterditeException.java: 21 tokens, 7 lines
+File allumettes/Human.java: 188 tokens, 49 lines
+File allumettes/ConfigurationException.java: 21 tokens, 16 lines (not NL-terminated)
+File allumettes/naif.java: 85 tokens, 28 lines
+File allumettes/Jouer.java: 501 tokens, 102 lines
+File allumettes/Jeu.java: 23 tokens, 23 lines
+File allumettes/Tricheur.java: 103 tokens, 30 lines
+File allumettes/strategie.java: 19 tokens, 7 lines
+File allumettes/Expert.java: 109 tokens, 28 lines
+File allumettes/Rapide.java: 73 tokens, 20 lines
+File allumettes/Naif.java: 85 tokens, 27 lines
+Total input: 16 files (16 new, 0 old), 2124 tokens
+
+allumettes/naif.java: line 1-28 [85]
+allumettes/Naif.java: line 1-27
+< package allumettes;
+< 
+< import java.util.Random;
+< 
+< public class naif implements strategie {
+< 	// attribut
+< 	private Random random;
+< 
+< 	// constructeur
+< 	public naif() {
+< 		this.random = new Random();
+< 	}
+< 
+< 	@Override
+< 	public int getPrise(Jeu jeu) {
+< 		assert (jeu != null);
+< 		assert (jeu.getNombreAllumettes() > 0);
+< 		int nbAllumettes;
+< 		// TODO Auto-generated method stub
+< 		nbAllumettes = this.random.nextInt(Jeu.PRISE_MAX - 1) + 1;
+< 		return nbAllumettes;
+< 	}
+< 
+< 	@Override
+< 	public String toString() {
+< 		return "naif";
+< 	}
+< }
+---
+> package allumettes;
+> 
+> import java.util.Random;
+> 
+> public class Naif implements strategie {
+> 	// attribut
+> 	private Random random;
+> 
+> 	// constructeur
+> 	public Naif() {
+> 		this.random = new Random();
+> 	}
+> 
+> 	@Override
+> 	public int getPrise(Jeu jeu) {
+> 		assert (jeu != null);
+> 		assert (jeu.getNombreAllumettes() > 0);
+> 		int nbAllumettes;
+> 		nbAllumettes = this.random.nextInt(Jeu.PRISE_MAX - 1) + 1;
+> 		return nbAllumettes;
+> 	}
+> 
+> 	@Override
+> 	public String toString() {
+> 		return "naif";
+> 	}
+> }
+
+allumettes/Expert.java: line 1-18 [52]
+allumettes/Naif.java: line 1-17
+< package allumettes;
+< 
+< import java.util.Random;
+< 
+< public class Expert implements strategie {
+< 
+< 	// attribut
+< 	private Random random;
+< 
+< 	// constructeur
+< 	public Expert() {
+< 		this.random = new Random();
+< 	}
+< 
+< 	@Override
+< 	public int getPrise(Jeu jeu) {
+< 		assert (jeu != null);
+< 		assert (jeu.getNombreAllumettes() > 0);
+---
+> package allumettes;
+> 
+> import java.util.Random;
+> 
+> public class Naif implements strategie {
+> 	// attribut
+> 	private Random random;
+> 
+> 	// constructeur
+> 	public Naif() {
+> 		this.random = new Random();
+> 	}
+> 
+> 	@Override
+> 	public int getPrise(Jeu jeu) {
+> 		assert (jeu != null);
+> 		assert (jeu.getNombreAllumettes() > 0);
+
+allumettes/Tricheur.java: line 1-15 [34]
+allumettes/Expert.java: line 1-16
+< package allumettes;
+< 
+< import java.util.Random;
+< 
+< public class Tricheur implements strategie {
+< 	// attribut
+< 	private Random random;
+< 
+< 	// constructeur
+< 	public Tricheur() {
+< 		this.random = new Random();
+< 	}
+< 
+< 	@Override
+< 	public int getPrise(Jeu jeu) throws CoupInvalideException {
+---
+> package allumettes;
+> 
+> import java.util.Random;
+> 
+> public class Expert implements strategie {
+> 
+> 	// attribut
+> 	private Random random;
+> 
+> 	// constructeur
+> 	public Expert() {
+> 		this.random = new Random();
+> 	}
+> 
+> 	@Override
+> 	public int getPrise(Jeu jeu) {
+
+allumettes/Human.java: line 16-21 [30]
+allumettes/Tricheur.java: line 12-17
+< 	}
+< 
+< 	@Override
+< 	public int getPrise(Jeu jeu) throws CoupInvalideException {
+< 		assert (jeu != null);
+< 		assert (jeu.getNombreAllumettes() > 0);
+---
+> 	}
+> 
+> 	@Override
+> 	public int getPrise(Jeu jeu) throws CoupInvalideException {
+> 		assert (jeu != null);
+> 		assert (jeu.getNombreAllumettes() > 0);
+
+allumettes/Rapide.java: line 6-11 [28]
+allumettes/Naif.java: line 12-17
+< 	}
+< 
+< 	@Override
+< 	public int getPrise(Jeu jeu) {
+< 		assert (jeu != null);
+< 		assert (jeu.getNombreAllumettes() > 0);
+---
+> 	}
+> 
+> 	@Override
+> 	public int getPrise(Jeu jeu) {
+> 		assert (jeu != null);
+> 		assert (jeu.getNombreAllumettes() > 0);
+

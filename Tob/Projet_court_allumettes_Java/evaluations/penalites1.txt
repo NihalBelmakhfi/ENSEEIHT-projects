@@ -1,0 +1,83 @@
+Date de l'évaluation : jeu. 17 mars 2022 09:54:03 CET
+
+!!! Il est interdit de changer ConfigurationException.java (voir evaluations/penalites1/ConfigurationException.java.diff)
+!!! Il est interdit de changer CoupInvalideException.java (voir evaluations/penalites1/CoupInvalideException.java.diff)
+
+Nombre de similitudes (voir evaluations/penalites1/sim_java.txt) : 11
+Les similitudes indiquent généralement du code à restructurer.
+
+Erreurs checkstyle (différentes/types) : 17/7	(voir evaluations/penalites1//checkstyle.log)
+
+Classe OperationInterditeException : OperationInterditeException (ok)
+
+Procuration sur le jeu réel : allumettes/JeuMandataire.java (ok)
+
+OperationInterditeException, levée dans : allumettes/JeuMandataire.java (ok)
+OperationInterditeException, récupérée dans : allumettes/Arbitre.java (ok)
+
+Throwable, Exception et RuntimeException ne devraient pas être récupérées car trop générales... ok
+
+AssertionError ne doit pas être récupérée... ok
+
+Autres exceptions récupérées :
+  | allumettes/Arbitre.java:74:                 } catch (ConfigurationException e) {
+  | allumettes/Arbitre.java:84:                 } catch (CoupInvalideException exp) {
+  | allumettes/Arbitre.java:105:                    } catch (ConfigurationException e1) {
+  | allumettes/Arbitre.java:114:                    } catch (CoupInvalideException exp1) {
+  | allumettes/Arbitre.java:133:                    } catch (ConfigurationException e2) {
+  | allumettes/Arbitre.java:142:                    } catch (CoupInvalideException exp2) {
+  | allumettes/Arbitre.java:159:                    } catch (CoupInvalideException exp9) {
+  | allumettes/Arbitre.java:168:                    } catch (ConfigurationException e9) {
+  | allumettes/Human.java:23:       } catch (InputMismatchException e) {
+  | allumettes/Human.java:29:               } catch (CoupInvalideException e1) {
+  | allumettes/Jouer.java:61:       } catch (ConfigurationException e) {
+  | allumettes/Jouer.java:66:       } catch (ArrayIndexOutOfBoundsException e2) {
+
+Utilisation de 'Scanner' : ok
+  | allumettes/Human.java:9:    private static Scanner scanner = new Scanner(System.in);
+
+Utilisation de 'split' : ok
+  | allumettes/Jouer.java:73:       String[] j1 = arg.split("@");
+
+Utilisation de 'Random' : ok
+  | allumettes/naif.java:3:import java.util.Random;
+  | allumettes/naif.java:7: private Random random;
+  | allumettes/naif.java:11:        this.random = new Random();
+  | allumettes/Tricheur.java:3:import java.util.Random;
+  | allumettes/Tricheur.java:7: private Random random;
+  | allumettes/Tricheur.java:11:        this.random = new Random();
+  | allumettes/Expert.java:3:import java.util.Random;
+  | allumettes/Expert.java:8:   private Random random;
+  | allumettes/Expert.java:12:      this.random = new Random();
+
+Utilisation de '3' : ok
+
+Affichage de 'Impossible !' : ok
+
+Utilisation de 'System.exit' : ok
+
+Compilation de Jouer.java : OK.
+Compilation de Arbitre.java : OK.
+Compilation de RapideTest.java : OK.
+Test exemplePresqueSujet : ok
+Test exempleTricheurSujet : ok
+Test exempleConfiantTricheurSujet : ok
+Test exempleRobustesse : ok
+Test exempleHumainTricheurExpert : ok
+Test exempleMaxLou : ok
+Test exempleRapideRapide : ok
+Test exempleTricheurExpert : ok
+
+Test RobustesseTest : OK (25 tests)	(voir evaluations/penalites1/RobustesseTest.log)
+
+On recommence avec les classes/interfaces fournies : Jeu ConfigurationException CoupInvalideException
+Compilation de Jouer.java : OK.
+Compilation de Arbitre.java : OK.
+
+Vérification du respect du diagramme de classe...
+Test FormeTest : OK (2 tests)	(voir evaluations/penalites1/FormeTest.log)
+
+Compilation de RapideTest.java : OK.
+Test allumettes.RapideTest : OK (2 tests)	(voir evaluations/penalites1/allumettes.RapideTest.log)
+
+Total pénalités : 0

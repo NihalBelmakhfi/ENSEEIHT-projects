@@ -1,0 +1,22 @@
+Les Q# font référence aux questions posées dans le fichier LISEZ-MOI.txt.
+Les pénalités '+' sont évaluées manuellement (enseignant de TP).
+Les pénalités '+' peuvent donner lieu à des pénalités définitives en V1 (si le travail est jugé insuffisant).
+
++ C3 : Qualité du source de l'application
+    + les noms de classe doivent commencer par une majuscule (naif)
+    + beaucoup de redondances dans arbitrer
++ C13 : L'arbitre ne doit ni utiliser directement, ni tester la stratégie d'un joueur (instanceof, equals, etc)
++ C16 : Tests unitaires de la stratégie rapide
+	+ non complets
++ C20 : Méthodes non courtes : arbitrer
+
++ Mauvaise mise en oeuvre du Proxy
+    + mauvaise compréhension/implantation
+
++ L3 : Fichier LISEZ-MOI.txt : non complété
+
++ Autres remarques :
+    - retirer les TODO
+
++ Correction sur les pénalités automatiques : 0
+

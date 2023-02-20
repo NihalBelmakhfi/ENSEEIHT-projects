@@ -1,0 +1,29 @@
+3c3,4
+< /** Exception qui indique qu'un coup invalide est joué.
+---
+> /**
+>  * Exception qui indique qu'un coup invalide est joué.
+15,17c16,18
+< 	/** Initialiser CoupInvalideException à partir du coup joué
+< 	 * et du problème identifié.  Par exemple, on peut avoir coup
+< 	 * qui vaut 0 et le problème "< 1".
+---
+> 	/**
+> 	 * Initialiser CoupInvalideException à partir du coup joué et du problème
+> 	 * identifié. Par exemple, on peut avoir coup qui vaut 0 et le problème "< 1".
+27,28c28,31
+< 	/** Retourner le coup.
+< 	  * @return le coup */
+---
+> 	/**
+> 	 * Retourner le coup.
+> 	 * @return le coup
+> 	 */
+33,34c36,39
+< 	/** Indiquer le problème.
+< 	  * @return le problème */
+---
+> 	/**
+> 	 * Indiquer le problème.
+> 	 * @return le problème
+> 	 */

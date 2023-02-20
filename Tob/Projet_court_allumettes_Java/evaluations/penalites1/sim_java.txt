@@ -1,0 +1,285 @@
+File allumettes/Arbitre.java: 1099 tokens, 189 lines
+File allumettes/JeuReel.java: 99 tokens, 31 lines
+File allumettes/JeuMandataire.java: 61 tokens, 25 lines
+File allumettes/CoupInvalideException.java: 68 tokens, 44 lines
+File allumettes/Joueur.java: 112 tokens, 60 lines
+File allumettes/OperationInterditeException.java: 21 tokens, 7 lines
+File allumettes/Human.java: 152 tokens, 44 lines
+File allumettes/ConfigurationException.java: 21 tokens, 18 lines
+File allumettes/naif.java: 85 tokens, 28 lines
+File allumettes/Jouer.java: 492 tokens, 100 lines
+File allumettes/Jeu.java: 23 tokens, 23 lines
+File allumettes/Tricheur.java: 103 tokens, 31 lines
+File allumettes/strategie.java: 19 tokens, 7 lines
+File allumettes/Expert.java: 109 tokens, 29 lines
+File allumettes/Rapide.java: 73 tokens, 21 lines
+Total input: 15 files (15 new, 0 old), 2537 tokens
+
+allumettes/Arbitre.java: line 58-78 [148]
+allumettes/Arbitre.java: line 89-108
+< 				if (this.confiant) {
+< 					try {
+< 						if (afficherAllumRest) {
+< 							System.out.println("Allumettes restantes : " + jeu.getNombreAllumettes());
+< 						}
+< 						afficherAllumRest = true;
+< 						System.out.print(joueur.getNom() + ", combien d'allumettes ? ");
+< 						nbChoisi = joueur.getPrise(jeu);
+< 						if (nbChoisi > 1) {
+< 							System.out.println(joueur.getNom() + " prend " + nbChoisi + " allumettes.");
+< 						} else {
+< 							System.out.println(joueur.getNom() + " prend " + nbChoisi + " allumette.");
+< 						}
+< 						jeu.retirer(nbChoisi);
+< 						roleJoueur1 = !roleJoueur1;
+< 						System.out.println();
+< 					} catch (ConfigurationException e) {
+< 						afficherAllumRest = false;
+< 						if (e.getMessage().contentEquals("triche")) {
+< 							System.out.println(
+< 									"[Une allumette en moins, plus que " + (jeu.getNombreAllumettes()) + ". Chut !]");
+---
+> 				else if (!this.confiant) {
+> 					try {
+> 						if (afficherAllumRest) {
+> 							System.out.println("Allumettes restantes : " + jeu.getNombreAllumettes());
+> 						}
+> 						afficherAllumRest = true;
+> 						System.out.print(joueur.getNom() + ", combien d'allumettes ? ");
+> 						nbChoisi = joueur.getPrise(jeu);
+> 						if (nbChoisi > 1) {
+> 							System.out.println(joueur.getNom() + " prend " + nbChoisi + " allumettes.");
+> 						} else {
+> 							System.out.println(joueur.getNom() + " prend " + nbChoisi + " allumette.");
+> 						}
+> 						jeu.retirer(nbChoisi);
+> 						roleJoueur1 = !roleJoueur1;
+> 						System.out.println();
+> 					} catch (ConfigurationException e1) {
+> 						afficherAllumRest = false;
+> 						if (e1.getMessage().contentEquals("triche")) {
+> 							System.out.println("Abandon de la partie car " + joueur.getNom() + " triche !");
+
+allumettes/Arbitre.java: line 123-129 [56]
+allumettes/Arbitre.java: line 149-155
+< 						System.out.println("Allumettes restantes : " + jeu.getNombreAllumettes());
+< 						nbChoisi = joueur.getPrise(jeu);
+< 						jeu.retirer(nbChoisi);
+< 						if (nbChoisi > 1) {
+< 							System.out.println(joueur.getNom() + " prend " + nbChoisi + " allumettes.");
+< 						} else {
+< 							System.out.println(joueur.getNom() + " prend 1 allumette.");
+---
+> 						Jeu jeuMan = new JeuMandataire(jeu);
+> 						nbChoisi = joueur.getPrise(jeuMan);
+> 						jeu.retirer(nbChoisi);
+> 						if (nbChoisi > 1) {
+> 							System.out.println(joueur.getNom() + " prend " + nbChoisi + " allumettes.");
+> 						} else {
+> 							System.out.println(joueur.getNom() + " prend " + nbChoisi + " allumette.");
+
+allumettes/Arbitre.java: line 96-101 [53]
+allumettes/Arbitre.java: line 151-156
+< 						nbChoisi = joueur.getPrise(jeu);
+< 						if (nbChoisi > 1) {
+< 							System.out.println(joueur.getNom() + " prend " + nbChoisi + " allumettes.");
+< 						} else {
+< 							System.out.println(joueur.getNom() + " prend " + nbChoisi + " allumette.");
+< 						}
+---
+> 						jeu.retirer(nbChoisi);
+> 						if (nbChoisi > 1) {
+> 							System.out.println(joueur.getNom() + " prend " + nbChoisi + " allumettes.");
+> 						} else {
+> 							System.out.println(joueur.getNom() + " prend " + nbChoisi + " allumette.");
+> 						}
+
+allumettes/naif.java: line 1-17 [52]
+allumettes/Expert.java: line 1-19
+< package allumettes;
+< 
+< import java.util.Random;
+< 
+< public class naif implements strategie {
+< 	// attribut
+< 	private Random random;
+< 
+< 	// constructeur
+< 	public naif() {
+< 		this.random = new Random();
+< 	}
+< 
+< 	@Override
+< 	public int getPrise(Jeu jeu) {
+< 		assert (jeu != null);
+< 		assert (jeu.getNombreAllumettes() > 0);
+---
+> package allumettes;
+> 
+> import java.util.Random;
+> 
+> public class Expert implements strategie {
+> 
+> 	// attribut
+> 	private Random random;
+> 
+> 	// constructeur
+> 	public Expert() {
+> 		this.random = new Random();
+> 	}
+> 
+> 	@Override
+> 	public int getPrise(Jeu jeu) {
+> 		// TODO Auto-generated method stub
+> 		assert (jeu != null);
+> 		assert (jeu.getNombreAllumettes() > 0);
+
+allumettes/Arbitre.java: line 108-118 [42]
+allumettes/Arbitre.java: line 136-145
+< 							System.out.println("Abandon de la partie car " + joueur.getNom() + " triche !");
+< 
+< 						} else {
+< 							System.out.print("Vous devez donner un entier.");
+< 						}
+< 						System.out.println();
+< 					} catch (CoupInvalideException exp1) {
+< 						nbrInvalide(nbChoisi, jeu);
+< 					}
+< 
+< 				}
+---
+> 							System.out.println(joueur.getNom() + "prend 1 allumette");
+> 
+> 						} else {
+> 							System.out.println("Vous devez donner un entier.");
+> 						}
+> 						System.out.println();
+> 					} catch (CoupInvalideException exp2) {
+> 						nbrInvalide(nbChoisi, jeu);
+> 					}
+> 				}
+
+allumettes/Arbitre.java: line 78-87 [38]
+allumettes/Arbitre.java: line 108-118
+< 									"[Une allumette en moins, plus que " + (jeu.getNombreAllumettes()) + ". Chut !]");
+< 						} else {
+< 							System.out.println("Vous devez donner un entier.");
+< 
+< 						}
+< 						System.out.println();
+< 					} catch (CoupInvalideException exp) {
+< 						nbrInvalide(nbChoisi, jeu);
+< 					}
+< 				}
+---
+> 							System.out.println("Abandon de la partie car " + joueur.getNom() + " triche !");
+> 
+> 						} else {
+> 							System.out.print("Vous devez donner un entier.");
+> 						}
+> 						System.out.println();
+> 					} catch (CoupInvalideException exp1) {
+> 						nbrInvalide(nbChoisi, jeu);
+> 					}
+> 
+> 				}
+
+allumettes/Expert.java: line 13-20 [37]
+allumettes/Rapide.java: line 6-13
+< 	}
+< 
+< 	@Override
+< 	public int getPrise(Jeu jeu) {
+< 		// TODO Auto-generated method stub
+< 		assert (jeu != null);
+< 		assert (jeu.getNombreAllumettes() > 0);
+< 		int nbAllumettes = Math.floorMod(jeu.getNombreAllumettes(), Jeu.PRISE_MAX + 1) - 1;
+---
+> 	}
+> 
+> 	@Override
+> 	public int getPrise(Jeu jeu) {
+> 		// TODO Auto-generated method stub
+> 		assert (jeu != null);
+> 		assert (jeu.getNombreAllumettes() > 0);
+> 		int nbAllumettes = Math.min(Jeu.PRISE_MAX, jeu.getNombreAllumettes());
+
+allumettes/Human.java: line 12-19 [36]
+allumettes/Rapide.java: line 5-13
+< 	public Human() {
+< 	}
+< 
+< 	@Override
+< 	public int getPrise(Jeu jeu) {
+< 		assert (jeu != null);
+< 		assert (jeu.getNombreAllumettes() > 0);
+< 		int nbAllumettes = 0;
+---
+> 	public Rapide() {
+> 	}
+> 
+> 	@Override
+> 	public int getPrise(Jeu jeu) {
+> 		// TODO Auto-generated method stub
+> 		assert (jeu != null);
+> 		assert (jeu.getNombreAllumettes() > 0);
+> 		int nbAllumettes = Math.min(Jeu.PRISE_MAX, jeu.getNombreAllumettes());
+
+allumettes/Tricheur.java: line 1-15 [34]
+allumettes/Expert.java: line 1-16
+< package allumettes;
+< 
+< import java.util.Random;
+< 
+< public class Tricheur implements strategie {
+< 	// attribut
+< 	private Random random;
+< 
+< 	// constructeur
+< 	public Tricheur() {
+< 		this.random = new Random();
+< 	}
+< 
+< 	@Override
+< 	public int getPrise(Jeu jeu) throws CoupInvalideException {
+---
+> package allumettes;
+> 
+> import java.util.Random;
+> 
+> public class Expert implements strategie {
+> 
+> 	// attribut
+> 	private Random random;
+> 
+> 	// constructeur
+> 	public Expert() {
+> 		this.random = new Random();
+> 	}
+> 
+> 	@Override
+> 	public int getPrise(Jeu jeu) {
+
+allumettes/Arbitre.java: line 181-183 [29]
+allumettes/Arbitre.java: line 184-186
+< 				System.out.println(perdant.getNom() + " perd !");
+< 				System.out.println(gagnant.getNom() + " gagne !");
+< 			} else {
+---
+> 				System.out.println(perdant.getNom() + " perd !");
+> 				System.out.println(gagnant.getNom() + " gagne !");
+> 			}
+
+allumettes/Arbitre.java: line 135-139 [25]
+allumettes/Arbitre.java: line 181-184
+< 							System.out.println("[Allumettes restantes : 2]");
+< 							System.out.println(joueur.getNom() + "prend 1 allumette");
+< 
+< 						} else {
+< 							System.out.println("Vous devez donner un entier.");
+---
+> 				System.out.println(perdant.getNom() + " perd !");
+> 				System.out.println(gagnant.getNom() + " gagne !");
+> 			} else {
+> 				System.out.println(perdant.getNom() + " perd !");
+

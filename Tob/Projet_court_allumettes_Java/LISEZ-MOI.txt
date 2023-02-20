@@ -1,0 +1,66 @@
+Nom       : belmakhfi
+Prénom    : nihal
+Groupe TP : C
+
+Les « ... » indiquent les endroits à compléter.
+
+=====[ Temps passé ]============================================================
+
+Ces informations de temps sont demandées à titre indicatif et ne sont pas
+prises en compte dans la notation du projet.
+
+
+* Temps passé sur la V1 : 9 heures 30 minutes
+* Temps passé sur la V2 : 5 heures 00 minutes
+
+Pour la V2 on ne tiendra pas compte du temps passé sur la V1.
+
+
+=====[ Questions ]==============================================================
+
+--------------------------------------------------------------------------------
+Pourquoi l'exception OperationInterditeException ne peut pas être définie
+comme vérifiée par le compilateur ?
+--------------------------------------------------------------------------------
+
+Elle n'est pas vérifiée par le compilateur car elle herite de la classe RunTimeException.
+Alors elle n'est pas déclarée dans la signature de la méthode (avec "throws").
+Car elle peut etre levée lors du fonctionnement de cette méthode, mais se propage
+en dehors de la méthode.
+
+
+--------------------------------------------------------------------------------
+Expliquer ce qu'il faut faire pour ajouter un nouveau niveau de jeu, par
+exemple la stratégie lente (C13).  Pour plus de précision, on numérotera
+les étapes à faire.
+--------------------------------------------------------------------------------
+
+1/ On crée une nouvelle strategie qui s'appelle lente et qui hérite de stratégie.
+2/ On définie les méthodes de la classe lente pour qu'elle devienne cohérente avec
+ce qui est attendu(getPrise retourne toujours 1 par exemple puisque la stratégie est lente)
+3/ On ajoute dans la méthode getstrategie de la classe Jouer, le cas ou la stratégie 
+est "lente".  
+4/ Ajouter des levées d'exceptions au cas de besoin et ajouter l'affichage correspondant
+dans la classe Arbitre.
+
+
+--------------------------------------------------------------------------------
+Expliquer ce qui permet, dans votre conception, de changer dynamiquement
+(en cours d'exécution du programme) la stratégie d'un joueur (C14).
+--------------------------------------------------------------------------------
+l'ajout de la méthode SetStrategie dans la classe Joueur nous permet de modifier 
+la stratégie du joueur pendant la partie. Et c'est l'arbitre qui se charge de 
+modifier cette méthode.
+
+
+
+=====[ Explications ]===========================================================
+
+--------------------------------------------------------------------------------
+Donner ici les explications supplémentaires utiles à la compréhension du
+travail rendu.
+--------------------------------------------------------------------------------
+
+...
+
+--------------------------------------------------------------------------------
