@@ -1,0 +1,15 @@
+test{
+    int * px = (new int);
+    (* px) = 42;
+    print (*px);
+    int * pz = (new int);
+    (* pz) = 6;
+    int x = 3;
+    int z = 8;
+    px = &x;
+    pz = &z;
+    int y = (*px);
+    int d = (*pz);
+    print y;
+    print d;
+}

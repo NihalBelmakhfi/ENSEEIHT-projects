@@ -1,0 +1,6 @@
+test{    
+    rat x = [3/5];
+    pa = &a;
+    rat p = (*pa);
+    print p;
+}

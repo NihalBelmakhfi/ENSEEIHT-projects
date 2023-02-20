@@ -1,0 +1,4 @@
+test{
+    bool y = true;
+    if (y){print y;}
+}

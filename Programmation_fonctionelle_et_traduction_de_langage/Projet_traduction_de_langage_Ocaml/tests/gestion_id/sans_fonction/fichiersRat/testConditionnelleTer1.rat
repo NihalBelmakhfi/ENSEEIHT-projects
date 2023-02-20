@@ -1,0 +1,4 @@
+test{
+    int y = 7;
+    print ((y = 7) ? true : false );
+}

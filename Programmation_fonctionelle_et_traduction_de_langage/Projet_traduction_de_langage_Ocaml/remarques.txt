@@ -1,0 +1,5 @@
+Ecrire les tests de pointeurs dans tests/type/sans_fonction et dans tests/tam/sans_fonction
+A chaque fois, on ajoute analyse_passe_affectable et on définit cette fonction, 
+puis dans analyse_passe_expression, on change Ident par affectable et on change son traitement,
+puis on ajoute le traitement de new, null et adresse, 
+et finalement on change la fonction affectation dans analyse_passe_instruction
