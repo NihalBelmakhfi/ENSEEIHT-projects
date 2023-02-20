@@ -1,0 +1,40 @@
+#  GLPK model pile created by SUN for RO teaching
+
+
+###############################  Model ###############################
+
+
+###############################  Sets  ###############################
+
+set DEMANDES; #d
+
+set PRODUITS; #p
+
+set MAGASINS; #m
+
+################### Variables ###################
+
+var ReponseDemande{d in DEMANDES, p in PRODUITS, m in MAGASINS}, >=0, integer;
+
+###################  Constants: Data to load   #########################
+
+param Demandes{d in DEMANDES, p in PRODUITS};
+param Stocks{m in MAGASINS, p in PRODUITS};
+param CoutUnitaire{m in MAGASINS, p in PRODUITS};
+
+################### Constraints ###################
+
+s.t. DemandeRespectee {d in DEMANDES, p in PRODUITS}:
+    sum{m in MAGASINS} ReponseDemande[d,p,m] = Demandes[d,p];
+
+s.t. StockLimite {m in MAGASINS, p in PRODUITS}:
+    sum{d in DEMANDES} ReponseDemande[d,p,m] <= Stocks[m,p];
+
+
+###### Objective ######
+
+minimize CoutLivraison:
+  sum{d in DEMANDES} sum{p in PRODUITS} sum {m in MAGASINS} ReponseDemande[d,p,m] * CoutUnitaire[m,p];
+
+
+end;

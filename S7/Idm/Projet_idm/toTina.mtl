@@ -1,0 +1,41 @@
+[comment encoding = UTF-8 /]
+[module toTina('http://www.example.org/reseauPetri')]
+
+
+[template public reseauPetriToTina(aPetriNet : PetriNet)]
+[comment @main/]
+[file (aPetriNet.name + '.net' , false, 'UTF-8')]
+net [aPetriNet.name/]
+
+[let Defplace : OrderedSet(Place) = aPetriNet.getPlaces() ]
+[for (p: Place | Defplace) ]
+	pl [p.name/] ([p.nbJetons/])
+[/for]
+[/let]
+[let Deftransition : OrderedSet(Transition) = aPetriNet.getTransitions() ]
+[for (t:Transition | Deftransition)]
+	tr [t.name/][for (a : Arc |aPetriNet.arc)][if (a.destination = t)] [a.source.name/][writeArcType(a)/][/if][/for] -> [for (a : Arc |aPetriNet.arc)][if (a.source = t)][a.destination.name/] [/if][/for]
+[/for]
+[/let]
+
+[/file]
+[/template]
+
+[query public getPlaces(p: PetriNet) : OrderedSet(Place) =
+ 		p.passages ->select( e | e.oclIsTypeOf(Place) )
+ 		->collect( e | e.oclAsType(Place) )
+ 		->asOrderedSet()
+ /]
+
+[query public getTransitions(p: PetriNet) : OrderedSet(Transition) =
+ 		p.passages ->select( e | e.oclIsTypeOf(Transition) )
+ 		->collect( e | e.oclAsType(Transition) )
+ 		->asOrderedSet()
+ /]
+
+[template public writeArcType(arc : Arc)]
+[if (arc.type = ArcType::classic and arc.jetonsConsom > 1)]
+*[arc.jetonsConsom/][elseif (arc.type = ArcType::readArc)]
+?[arc.jetonsConsom
+/][/if]
+[/template]

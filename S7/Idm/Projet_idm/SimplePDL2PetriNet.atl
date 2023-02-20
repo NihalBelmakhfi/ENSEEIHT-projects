@@ -1,0 +1,133 @@
+-- @nsURI SimplePDL=http://simplepdl
+-- @nsURI PetriNet=http://petrinet
+
+module SimplePDL2PetriNet;
+create OUT: reseauPetri from IN: simplepdl;
+
+-- Obtenir le processus qui contient ce process element.
+-- Remarque: Ce helper ne serait pas utile si une référence opposite
+-- avait été placée entre Process et ProcessElement
+ helper context simplepdl!ProcessElement
+ def: getProcess(): simplepdl!Process =
+ simplepdl!Process.allInstances()
+ ->select(p | p.processElements->includes(self))
+ ->asSequence()->first();
+
+ -- Traduire un Process en un PetriNet de même nom
+ rule Process2PetriNet {
+ from p: simplepdl!Process
+ to pn: reseauPetri!PetriNet (
+  name <- p.name
+  --passages <- reseauPetri!Place.allInstances(),
+  --passages <- reseauPetri!Transition.allInstances(),
+  --arc <- reseauPetri!Arc.allInstances()
+  )
+ }
+
+ -- Traduire une WorkDefinition en un motif sur le réseau de Petri
+ rule WorkDefinition2PetriNet {
+ from wd: simplepdl!WorkDefinition
+ to
+ -- PLACES d'une WorkDefinition
+ p_ready: reseauPetri!Place(
+ name <- wd.name + '_ready',
+ nbJetons <- 1
+ ),
+ 
+ p_running: reseauPetri!Place(
+  name <- wd.name + '_running',
+  nbJetons <- 0
+ ),
+ p_started: reseauPetri!Place(
+  name <- wd.name + '_started',
+  nbJetons <- 0
+ ),
+
+ p_finished: reseauPetri!Place(
+  name <- wd.name + '_finished',
+  nbJetons <- 0
+ ),
+
+ -- TRANSITIONS d'une WorkDefinition
+t_start: reseauPetri!Transition(
+  name <- wd.name + '_start'
+),
+
+t_finish: reseauPetri!Transition(
+  name <- wd.name + '_finish'
+),
+
+-- ARC d'un WorkDefinition 
+  a_start: reseauPetri!Arc(
+    source <- p_ready ,
+    destination <- t_start
+  ),
+  a_running: reseauPetri!Arc(
+    source <- t_start ,
+    destination <- p_running
+  ),
+  a_started: reseauPetri!Arc(
+    source <- t_start ,
+    destination <- p_started
+  ),
+  a_finish: reseauPetri!Arc(
+    source <- p_running ,
+    destination <- t_finish
+  ),
+  a_finished: reseauPetri!Arc(
+    source <- t_finish ,
+    destination <- p_finished
+  )
+ }
+
+--Traduire une WorkSequence en arc
+rule WorkSequence2PetriNet {
+  from ws: simplepdl!WorkSequence
+  
+  to
+  a_ws: reseauPetri!Arc(
+    type <- #readArc,
+    jetonsConsom <- 1,
+    source <- thisModule.resolveTemp(ws.predecessor,
+        if ((ws.linkType = #finishToStart) or (ws.linkType = #finishToFinish))
+            then 'p_finished'
+        else
+            'p_started'
+        endif
+		),
+    destination <- thisModule.resolveTemp(ws.successor,
+        if ((ws.linkType = #startToStart) or (ws.linkType = #finishToStart))
+            then 't_start'
+        else
+            't_finish'
+        endif
+		)
+		)
+}
+  rule Ressources2PetriNet {
+    from r: simplepdl!Ressources
+    to
+        r1: reseauPetri!Place(
+          name <- r.name,
+          nbJetons <- r.quantity
+        )
+ }
+
+  rule AllocationRessource2PetriNet {
+    from alloca: simplepdl!AllocationRessource
+    to 
+    a_allouer: reseauPetri!Arc (
+      source <- thisModule.resolveTemp(alloca.ressources, 'r1'),
+      destination <- thisModule.resolveTemp(alloca.workdefinition,'t_start'),
+      jetonsConsom <- alloca.quantiteRessources,
+      type <- #CLASSIC
+    ),
+    a_liberer: reseauPetri!Arc (
+      source <- thisModule.resolveTemp(alloca.workdefinition, 't_finish'),
+      destination <- thisModule.resolveTemp(alloca.ressources,'r1'),
+      jetonsConsom <- alloca.quantiteRessources,
+      type <- #CLASSIC
+    )
+  }
+
+

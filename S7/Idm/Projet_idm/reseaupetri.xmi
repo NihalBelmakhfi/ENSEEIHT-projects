@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ASCII"?>
+<reseauPetri:PetriNet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:reseauPetri="http://www.example.org/reseauPetri" name="process">
+  <passages xsi:type="reseauPetri:Place" sortants="//@arc.0" name="Conception_ready" nbJetons="1"/>
+  <passages xsi:type="reseauPetri:Place" sortants="//@arc.20 //@arc.23" entrants="//@arc.2" name="Conception_started"/>
+  <passages xsi:type="reseauPetri:Place" sortants="//@arc.1" entrants="//@arc.3" name="Conception_running"/>
+  <passages xsi:type="reseauPetri:Place" sortants="//@arc.21 //@arc.22" entrants="//@arc.4" name="Conception_finished"/>
+  <passages xsi:type="reseauPetri:Transition" sortants="//@arc.2 //@arc.3" entrants="//@arc.0" name="Conception_start"/>
+  <passages xsi:type="reseauPetri:Transition" sortants="//@arc.4" entrants="//@arc.1" name="Conception_finish"/>
+  <passages xsi:type="reseauPetri:Place" sortants="//@arc.5" name="RedactionDoc_ready" nbJetons="1"/>
+  <passages xsi:type="reseauPetri:Place" entrants="//@arc.7" name="RedactionDoc_started"/>
+  <passages xsi:type="reseauPetri:Place" sortants="//@arc.6" entrants="//@arc.8" name="RedactionDoc_running"/>
+  <passages xsi:type="reseauPetri:Place" entrants="//@arc.9" name="RedactionDoc_finished"/>
+  <passages xsi:type="reseauPetri:Transition" sortants="//@arc.7 //@arc.8" entrants="//@arc.5 //@arc.20" name="RedactionDoc_start"/>
+  <passages xsi:type="reseauPetri:Transition" sortants="//@arc.9" entrants="//@arc.6 //@arc.21" name="RedactionDoc_finish"/>
+  <passages xsi:type="reseauPetri:Place" sortants="//@arc.10" name="Programmation_ready" nbJetons="1"/>
+  <passages xsi:type="reseauPetri:Place" entrants="//@arc.12" name="Programmation_started"/>
+  <passages xsi:type="reseauPetri:Place" sortants="//@arc.11" entrants="//@arc.13" name="Programmation_running"/>
+  <passages xsi:type="reseauPetri:Place" sortants="//@arc.24" entrants="//@arc.14" name="Programmation_finished"/>
+  <passages xsi:type="reseauPetri:Transition" sortants="//@arc.12 //@arc.13" entrants="//@arc.10 //@arc.22" name="Programmation_start"/>
+  <passages xsi:type="reseauPetri:Transition" sortants="//@arc.14" entrants="//@arc.11" name="Programmation_finish"/>
+  <passages xsi:type="reseauPetri:Place" sortants="//@arc.15" name="RedactionTests_ready" nbJetons="1"/>
+  <passages xsi:type="reseauPetri:Place" entrants="//@arc.17" name="RedactionTests_started"/>
+  <passages xsi:type="reseauPetri:Place" sortants="//@arc.16" entrants="//@arc.18" name="RedactionTests_running"/>
+  <passages xsi:type="reseauPetri:Place" entrants="//@arc.19" name="RedactionTests_finished"/>
+  <passages xsi:type="reseauPetri:Transition" sortants="//@arc.17 //@arc.18" entrants="//@arc.15 //@arc.23" name="RedactionTests_start"/>
+  <passages xsi:type="reseauPetri:Transition" sortants="//@arc.19" entrants="//@arc.16 //@arc.24" name="RedactionTests_finish"/>
+  <arc source="//@passages.0" destination="//@passages.4" jetonsConsom="1"/>
+  <arc source="//@passages.2" destination="//@passages.5" jetonsConsom="1"/>
+  <arc source="//@passages.4" destination="//@passages.1" jetonsConsom="1"/>
+  <arc source="//@passages.4" destination="//@passages.2" jetonsConsom="1"/>
+  <arc source="//@passages.5" destination="//@passages.3" jetonsConsom="1"/>
+  <arc source="//@passages.6" destination="//@passages.10" jetonsConsom="1"/>
+  <arc source="//@passages.8" destination="//@passages.11" jetonsConsom="1"/>
+  <arc source="//@passages.10" destination="//@passages.7" jetonsConsom="1"/>
+  <arc source="//@passages.10" destination="//@passages.8" jetonsConsom="1"/>
+  <arc source="//@passages.11" destination="//@passages.9" jetonsConsom="1"/>
+  <arc source="//@passages.12" destination="//@passages.16" jetonsConsom="1"/>
+  <arc source="//@passages.14" destination="//@passages.17" jetonsConsom="1"/>
+  <arc source="//@passages.16" destination="//@passages.13" jetonsConsom="1"/>
+  <arc source="//@passages.16" destination="//@passages.14" jetonsConsom="1"/>
+  <arc source="//@passages.17" destination="//@passages.15" jetonsConsom="1"/>
+  <arc source="//@passages.18" destination="//@passages.22" jetonsConsom="1"/>
+  <arc source="//@passages.20" destination="//@passages.23" jetonsConsom="1"/>
+  <arc source="//@passages.22" destination="//@passages.19" jetonsConsom="1"/>
+  <arc source="//@passages.22" destination="//@passages.20" jetonsConsom="1"/>
+  <arc source="//@passages.23" destination="//@passages.21" jetonsConsom="1"/>
+  <arc source="//@passages.1" destination="//@passages.10" jetonsConsom="1" type="readArc"/>
+  <arc source="//@passages.3" destination="//@passages.11" jetonsConsom="1" type="readArc"/>
+  <arc source="//@passages.3" destination="//@passages.16" jetonsConsom="1" type="readArc"/>
+  <arc source="//@passages.1" destination="//@passages.22" jetonsConsom="1" type="readArc"/>
+  <arc source="//@passages.15" destination="//@passages.23" jetonsConsom="1" type="readArc"/>
+</reseauPetri:PetriNet>

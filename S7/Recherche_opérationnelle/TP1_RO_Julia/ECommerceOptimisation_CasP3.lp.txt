@@ -1,0 +1,75 @@
+\* Problem: ECommerceOptimisation_CasP3 *\
+
+Minimize
+ CoutLivraison: + ReponseDemande(D1,P1,M1) + 2 ReponseDemande(D1,P1,M2)
+ + 3 ReponseDemande(D1,P1,M3) + ReponseDemande(D1,P2,M1)
+ + 3 ReponseDemande(D1,P2,M2) + 2 ReponseDemande(D1,P2,M3)
+ + ReponseDemande(D2,P1,M1) + 2 ReponseDemande(D2,P1,M2)
+ + 3 ReponseDemande(D2,P1,M3) + ReponseDemande(D2,P2,M1)
+ + 3 ReponseDemande(D2,P2,M2) + 2 ReponseDemande(D2,P2,M3)
+ + 120 Expedie(M1,D1) + 112 Expedie(M1,D2) + 91 Expedie(M2,D1)
+ + 110 Expedie(M2,D2) + 105 Expedie(M3,D1) + 110 Expedie(M3,D2)
+
+Subject To
+ DemandeRespectee(D1,P1): + ReponseDemande(D1,P1,M1)
+ + ReponseDemande(D1,P1,M2) + ReponseDemande(D1,P1,M3) = 2
+ DemandeRespectee(D1,P2): + ReponseDemande(D1,P2,M1)
+ + ReponseDemande(D1,P2,M2) + ReponseDemande(D1,P2,M3) = -0
+ DemandeRespectee(D2,P1): + ReponseDemande(D2,P1,M1)
+ + ReponseDemande(D2,P1,M2) + ReponseDemande(D2,P1,M3) = 1
+ DemandeRespectee(D2,P2): + ReponseDemande(D2,P2,M1)
+ + ReponseDemande(D2,P2,M2) + ReponseDemande(D2,P2,M3) = 3
+ StockLimite(M1,P1): + ReponseDemande(D1,P1,M1)
+ + ReponseDemande(D2,P1,M1) <= 2.5
+ StockLimite(M1,P2): + ReponseDemande(D1,P2,M1)
+ + ReponseDemande(D2,P2,M1) <= 1
+ StockLimite(M2,P1): + ReponseDemande(D1,P1,M2)
+ + ReponseDemande(D2,P1,M2) <= 1
+ StockLimite(M2,P2): + ReponseDemande(D1,P2,M2)
+ + ReponseDemande(D2,P2,M2) <= 2
+ StockLimite(M3,P1): + ReponseDemande(D1,P1,M3)
+ + ReponseDemande(D2,P1,M3) <= 2
+ StockLimite(M3,P2): + ReponseDemande(D1,P2,M3)
+ + ReponseDemande(D2,P2,M3) <= 1
+ Expedition(M1,D1): - ReponseDemande(D1,P1,M1)
+ - ReponseDemande(D1,P2,M1) + 3.5 Expedie(M1,D1) >= -0
+ Expedition(M1,D2): - ReponseDemande(D2,P1,M1)
+ - ReponseDemande(D2,P2,M1) + 3.5 Expedie(M1,D2) >= -0
+ Expedition(M2,D1): - ReponseDemande(D1,P1,M2)
+ - ReponseDemande(D1,P2,M2) + 3 Expedie(M2,D1) >= -0
+ Expedition(M2,D2): - ReponseDemande(D2,P1,M2)
+ - ReponseDemande(D2,P2,M2) + 3 Expedie(M2,D2) >= -0
+ Expedition(M3,D1): - ReponseDemande(D1,P1,M3)
+ - ReponseDemande(D1,P2,M3) + 3 Expedie(M3,D1) >= -0
+ Expedition(M3,D2): - ReponseDemande(D2,P1,M3)
+ - ReponseDemande(D2,P2,M3) + 3 Expedie(M3,D2) >= -0
+
+Bounds
+ 0 <= Expedie(M1,D1) <= 1
+ 0 <= Expedie(M1,D2) <= 1
+ 0 <= Expedie(M2,D1) <= 1
+ 0 <= Expedie(M2,D2) <= 1
+ 0 <= Expedie(M3,D1) <= 1
+ 0 <= Expedie(M3,D2) <= 1
+
+Generals
+ ReponseDemande(D1,P1,M1)
+ ReponseDemande(D1,P1,M2)
+ ReponseDemande(D1,P1,M3)
+ ReponseDemande(D1,P2,M1)
+ ReponseDemande(D1,P2,M2)
+ ReponseDemande(D1,P2,M3)
+ ReponseDemande(D2,P1,M1)
+ ReponseDemande(D2,P1,M2)
+ ReponseDemande(D2,P1,M3)
+ ReponseDemande(D2,P2,M1)
+ ReponseDemande(D2,P2,M2)
+ ReponseDemande(D2,P2,M3)
+ Expedie(M1,D1)
+ Expedie(M1,D2)
+ Expedie(M2,D1)
+ Expedie(M2,D2)
+ Expedie(M3,D1)
+ Expedie(M3,D2)
+
+End

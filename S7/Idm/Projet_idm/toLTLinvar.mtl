@@ -1,0 +1,28 @@
+[comment encoding = UTF-8 /]
+[module toLTLinvar('http://simplepdl')]
+
+
+[template public toLTLinvar(aProcess : Process)]
+[comment @main/]
+[file (aProcess.name.concat('Invar.ltl'), false, 'UTF-8')]
+
+[let wds : OrderedSet(WorkDefinition) = aProcess.getWorkDef() ] 
+		op invariants = [for (wd : WorkDefinition | wds) separator (' /\\\n ') after (';')
+		][wd.name/]['_ready'/] + [wd.name/]['_started'/] + [wd.name/]['_running'/][/for]
+[/let]
+
+
+
+['['/][']'/] (finished => dead);
+['['/][']'/] <> dead;
+['['/][']'/] (dead => finished);
+- <> finished;
+
+[/file]
+[/template]
+
+[query public getWorkDef(p: Process) : OrderedSet(WorkDefinition) =
+        p.processElements ->select( e | e.oclIsKindOf(WorkDefinition) )
+                ->collect( e | e.oclAsType(WorkDefinition) )
+                ->asOrderedSet()
+/]

@@ -1,0 +1,15 @@
+\*Problem: Assemblage *\
+Maximize
+    margetotale: + 10000 NL + 9000 NS
+    
+Subject To 
+    NombreDheuresMaxParSemaines: + 0.06 NL + 0.05 NS <= 60
+    EspaceDansParking: + 10 NL + 20 NS <= 15000
+    NobmreVoituresMaxLParSemaines: NL <= 800   
+
+Integer 
+NL
+NS
+
+End
+    

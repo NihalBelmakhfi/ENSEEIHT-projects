@@ -1,0 +1,30 @@
+\* Problem: gestionPersonnel *\
+
+Minimize
+ CoutFormation: + 5 trav(firstPerson,firstJob)
+ + 12 trav(firstPerson,secondJob) + 20 trav(secondPerson,firstJob)
+ + 11 trav(secondPerson,secondJob)
+
+Subject To
+ UnTParP(firstPerson): + trav(firstPerson,firstJob)
+ + trav(firstPerson,secondJob) = 1
+ UnTParP(secondPerson): + trav(secondPerson,firstJob)
+ + trav(secondPerson,secondJob) = 1
+ UnePParT(firstJob): + trav(firstPerson,firstJob)
+ + trav(secondPerson,firstJob) = 1
+ UnePParT(secondJob): + trav(firstPerson,secondJob)
+ + trav(secondPerson,secondJob) = 1
+
+Bounds
+ 0 <= trav(firstPerson,firstJob) <= 1
+ 0 <= trav(firstPerson,secondJob) <= 1
+ 0 <= trav(secondPerson,firstJob) <= 1
+ 0 <= trav(secondPerson,secondJob) <= 1
+
+Generals
+ trav(firstPerson,firstJob)
+ trav(firstPerson,secondJob)
+ trav(secondPerson,firstJob)
+ trav(secondPerson,secondJob)
+
+End

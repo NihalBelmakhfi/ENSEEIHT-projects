@@ -1,0 +1,29 @@
+#################### Model ####################
+
+#################### Sets #####################
+
+set PERSONNES;
+set TRAVAUX;
+
+################# Variables #################
+
+var trav{i in PERSONNES, j in TRAVAUX}, binary;
+
+################# Constants: Data to load ##################
+
+param coutformation{i in PERSONNES, j in TRAVAUX};
+
+################# Constraints ##################
+
+s.t. UnTParP{i in PERSONNES}: 
+    sum{j in TRAVAUX} trav[i, j] = 1;
+    
+s.t. UnePParT{j in TRAVAUX}: 
+    sum{i in PERSONNES} trav[i, j] = 1;
+    
+################# Objective ###################
+
+minimize CoutFormation:
+    sum{i in PERSONNES} sum{j in TRAVAUX} trav[i, j]*coutformation[i, j];
+    
+end;

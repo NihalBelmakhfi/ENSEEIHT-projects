@@ -1,0 +1,16 @@
+data;
+
+set PERSONNES :=
+firstPerson
+secondPerson;
+
+set TRAVAUX :=
+firstJob
+secondJob;
+
+param coutformation: firstJob secondJob :=
+firstPerson 5 12
+secondPerson 20 11;
+
+end;
+

@@ -1,0 +1,195 @@
+\* Problem: ECommerceOptimisation_CasP4 *\
+
+Minimize
+ DistanceTotal: + Passages(ALPHA,C1) + Passages(ALPHA,C2)
+ + 10 Passages(ALPHA,C3) + 12 Passages(ALPHA,C4) + 12 Passages(ALPHA,C5)
+ + Passages(C1,ALPHA) + Passages(C1,C2) + 8 Passages(C1,C3)
+ + 10 Passages(C1,C4) + 11 Passages(C1,C5) + Passages(C2,ALPHA)
+ + Passages(C2,C1) + 8 Passages(C2,C3) + 11 Passages(C2,C4)
+ + 10 Passages(C2,C5) + 10 Passages(C3,ALPHA) + 8 Passages(C3,C1)
+ + 8 Passages(C3,C2) + Passages(C3,C4) + Passages(C3,C5)
+ + 12 Passages(C4,ALPHA) + 10 Passages(C4,C1) + 11 Passages(C4,C2)
+ + Passages(C4,C3) + Passages(C4,C5) + 12 Passages(C5,ALPHA)
+ + 11 Passages(C5,C1) + 10 Passages(C5,C2) + Passages(C5,C3)
+ + Passages(C5,C4)
+
+Subject To
+ ClientSuivant(ALPHA): + Passages(ALPHA,ALPHA) + Passages(ALPHA,C1)
+ + Passages(ALPHA,C2) + Passages(ALPHA,C3) + Passages(ALPHA,C4)
+ + Passages(ALPHA,C5) = 1
+ ClientSuivant(C1): + Passages(C1,ALPHA) + Passages(C1,C1)
+ + Passages(C1,C2) + Passages(C1,C3) + Passages(C1,C4) + Passages(C1,C5)
+ = 1
+ ClientSuivant(C2): + Passages(C2,ALPHA) + Passages(C2,C1)
+ + Passages(C2,C2) + Passages(C2,C3) + Passages(C2,C4) + Passages(C2,C5)
+ = 1
+ ClientSuivant(C3): + Passages(C3,ALPHA) + Passages(C3,C1)
+ + Passages(C3,C2) + Passages(C3,C3) + Passages(C3,C4) + Passages(C3,C5)
+ = 1
+ ClientSuivant(C4): + Passages(C4,ALPHA) + Passages(C4,C1)
+ + Passages(C4,C2) + Passages(C4,C3) + Passages(C4,C4) + Passages(C4,C5)
+ = 1
+ ClientSuivant(C5): + Passages(C5,ALPHA) + Passages(C5,C1)
+ + Passages(C5,C2) + Passages(C5,C3) + Passages(C5,C4) + Passages(C5,C5)
+ = 1
+ ClientPrecedent(ALPHA): + Passages(ALPHA,ALPHA) + Passages(C1,ALPHA)
+ + Passages(C2,ALPHA) + Passages(C3,ALPHA) + Passages(C4,ALPHA)
+ + Passages(C5,ALPHA) = 1
+ ClientPrecedent(C1): + Passages(ALPHA,C1) + Passages(C1,C1)
+ + Passages(C2,C1) + Passages(C3,C1) + Passages(C4,C1) + Passages(C5,C1)
+ = 1
+ ClientPrecedent(C2): + Passages(ALPHA,C2) + Passages(C1,C2)
+ + Passages(C2,C2) + Passages(C3,C2) + Passages(C4,C2) + Passages(C5,C2)
+ = 1
+ ClientPrecedent(C3): + Passages(ALPHA,C3) + Passages(C1,C3)
+ + Passages(C2,C3) + Passages(C3,C3) + Passages(C4,C3) + Passages(C5,C3)
+ = 1
+ ClientPrecedent(C4): + Passages(ALPHA,C4) + Passages(C1,C4)
+ + Passages(C2,C4) + Passages(C3,C4) + Passages(C4,C4) + Passages(C5,C4)
+ = 1
+ ClientPrecedent(C5): + Passages(ALPHA,C5) + Passages(C1,C5)
+ + Passages(C2,C5) + Passages(C3,C5) + Passages(C4,C5) + Passages(C5,C5)
+ = 1
+ EliminerSubTours(C1,C1): - 5 Passages(C1,C1) >= -4
+ EliminerSubTours(C1,C2): - 5 Passages(C1,C2) - Ordre(C1) + Ordre(C2)
+ >= -4
+ EliminerSubTours(C1,C3): - 5 Passages(C1,C3) - Ordre(C1) + Ordre(C3)
+ >= -4
+ EliminerSubTours(C1,C4): - 5 Passages(C1,C4) - Ordre(C1) + Ordre(C4)
+ >= -4
+ EliminerSubTours(C1,C5): - 5 Passages(C1,C5) - Ordre(C1) + Ordre(C5)
+ >= -4
+ EliminerSubTours(C2,C1): - 5 Passages(C2,C1) + Ordre(C1) - Ordre(C2)
+ >= -4
+ EliminerSubTours(C2,C2): - 5 Passages(C2,C2) >= -4
+ EliminerSubTours(C2,C3): - 5 Passages(C2,C3) - Ordre(C2) + Ordre(C3)
+ >= -4
+ EliminerSubTours(C2,C4): - 5 Passages(C2,C4) - Ordre(C2) + Ordre(C4)
+ >= -4
+ EliminerSubTours(C2,C5): - 5 Passages(C2,C5) - Ordre(C2) + Ordre(C5)
+ >= -4
+ EliminerSubTours(C3,C1): - 5 Passages(C3,C1) + Ordre(C1) - Ordre(C3)
+ >= -4
+ EliminerSubTours(C3,C2): - 5 Passages(C3,C2) + Ordre(C2) - Ordre(C3)
+ >= -4
+ EliminerSubTours(C3,C3): - 5 Passages(C3,C3) >= -4
+ EliminerSubTours(C3,C4): - 5 Passages(C3,C4) - Ordre(C3) + Ordre(C4)
+ >= -4
+ EliminerSubTours(C3,C5): - 5 Passages(C3,C5) - Ordre(C3) + Ordre(C5)
+ >= -4
+ EliminerSubTours(C4,C1): - 5 Passages(C4,C1) + Ordre(C1) - Ordre(C4)
+ >= -4
+ EliminerSubTours(C4,C2): - 5 Passages(C4,C2) + Ordre(C2) - Ordre(C4)
+ >= -4
+ EliminerSubTours(C4,C3): - 5 Passages(C4,C3) + Ordre(C3) - Ordre(C4)
+ >= -4
+ EliminerSubTours(C4,C4): - 5 Passages(C4,C4) >= -4
+ EliminerSubTours(C4,C5): - 5 Passages(C4,C5) - Ordre(C4) + Ordre(C5)
+ >= -4
+ EliminerSubTours(C5,C1): - 5 Passages(C5,C1) + Ordre(C1) - Ordre(C5)
+ >= -4
+ EliminerSubTours(C5,C2): - 5 Passages(C5,C2) + Ordre(C2) - Ordre(C5)
+ >= -4
+ EliminerSubTours(C5,C3): - 5 Passages(C5,C3) + Ordre(C3) - Ordre(C5)
+ >= -4
+ EliminerSubTours(C5,C4): - 5 Passages(C5,C4) + Ordre(C4) - Ordre(C5)
+ >= -4
+ EliminerSubTours(C5,C5): - 5 Passages(C5,C5) >= -4
+ OrdrePositive(C1): + Ordre(C1) >= 1
+ OrdrePositive(C2): + Ordre(C2) >= 1
+ OrdrePositive(C3): + Ordre(C3) >= 1
+ OrdrePositive(C4): + Ordre(C4) >= 1
+ OrdrePositive(C5): + Ordre(C5) >= 1
+ OrdreInfn(C1): + Ordre(C1) <= 5
+ OrdreInfn(C2): + Ordre(C2) <= 5
+ OrdreInfn(C3): + Ordre(C3) <= 5
+ OrdreInfn(C4): + Ordre(C4) <= 5
+ OrdreInfn(C5): + Ordre(C5) <= 5
+
+Bounds
+ 0 <= Passages(ALPHA,ALPHA) <= 1
+ 0 <= Passages(ALPHA,C1) <= 1
+ 0 <= Passages(ALPHA,C2) <= 1
+ 0 <= Passages(ALPHA,C3) <= 1
+ 0 <= Passages(ALPHA,C4) <= 1
+ 0 <= Passages(ALPHA,C5) <= 1
+ 0 <= Passages(C1,ALPHA) <= 1
+ 0 <= Passages(C1,C1) <= 1
+ 0 <= Passages(C1,C2) <= 1
+ 0 <= Passages(C1,C3) <= 1
+ 0 <= Passages(C1,C4) <= 1
+ 0 <= Passages(C1,C5) <= 1
+ 0 <= Passages(C2,ALPHA) <= 1
+ 0 <= Passages(C2,C1) <= 1
+ 0 <= Passages(C2,C2) <= 1
+ 0 <= Passages(C2,C3) <= 1
+ 0 <= Passages(C2,C4) <= 1
+ 0 <= Passages(C2,C5) <= 1
+ 0 <= Passages(C3,ALPHA) <= 1
+ 0 <= Passages(C3,C1) <= 1
+ 0 <= Passages(C3,C2) <= 1
+ 0 <= Passages(C3,C3) <= 1
+ 0 <= Passages(C3,C4) <= 1
+ 0 <= Passages(C3,C5) <= 1
+ 0 <= Passages(C4,ALPHA) <= 1
+ 0 <= Passages(C4,C1) <= 1
+ 0 <= Passages(C4,C2) <= 1
+ 0 <= Passages(C4,C3) <= 1
+ 0 <= Passages(C4,C4) <= 1
+ 0 <= Passages(C4,C5) <= 1
+ 0 <= Passages(C5,ALPHA) <= 1
+ 0 <= Passages(C5,C1) <= 1
+ 0 <= Passages(C5,C2) <= 1
+ 0 <= Passages(C5,C3) <= 1
+ 0 <= Passages(C5,C4) <= 1
+ 0 <= Passages(C5,C5) <= 1
+ Ordre(C1) free
+ Ordre(C2) free
+ Ordre(C3) free
+ Ordre(C4) free
+ Ordre(C5) free
+
+Generals
+ Passages(ALPHA,ALPHA)
+ Passages(ALPHA,C1)
+ Passages(ALPHA,C2)
+ Passages(ALPHA,C3)
+ Passages(ALPHA,C4)
+ Passages(ALPHA,C5)
+ Passages(C1,ALPHA)
+ Passages(C1,C1)
+ Passages(C1,C2)
+ Passages(C1,C3)
+ Passages(C1,C4)
+ Passages(C1,C5)
+ Passages(C2,ALPHA)
+ Passages(C2,C1)
+ Passages(C2,C2)
+ Passages(C2,C3)
+ Passages(C2,C4)
+ Passages(C2,C5)
+ Passages(C3,ALPHA)
+ Passages(C3,C1)
+ Passages(C3,C2)
+ Passages(C3,C3)
+ Passages(C3,C4)
+ Passages(C3,C5)
+ Passages(C4,ALPHA)
+ Passages(C4,C1)
+ Passages(C4,C2)
+ Passages(C4,C3)
+ Passages(C4,C4)
+ Passages(C4,C5)
+ Passages(C5,ALPHA)
+ Passages(C5,C1)
+ Passages(C5,C2)
+ Passages(C5,C3)
+ Passages(C5,C4)
+ Passages(C5,C5)
+ Ordre(C1)
+ Ordre(C2)
+ Ordre(C3)
+ Ordre(C4)
+ Ordre(C5)
+
+End

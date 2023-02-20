@@ -1,0 +1,33 @@
+# Autres données possibles pour 
+# le problème d'optimisation pour l'e-commerce
+#Cas Particulier 1
+
+data;
+
+set DEMANDES :=
+D;
+
+set FLUIDES :=
+F1
+F2;
+
+set MAGASINS :=
+M1
+M2
+M3;
+
+
+param Demandes: F1 F2 :=
+D 3 3;
+
+param Stocks: F1 F2 :=
+M1 2.5 1
+M2 1 2
+M3 2 1;
+
+param CoutUnitaire: F1 F2 :=
+M1 1 1
+M2 2 3
+M3 3 2;
+
+end;

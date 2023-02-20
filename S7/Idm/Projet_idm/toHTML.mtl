@@ -1,0 +1,62 @@
+[comment encoding = UTF-8 /]
+[module toHTML('http://simplepdl')]
+
+
+[template public toHTML(aProcess : Process)]
+[comment @main/]
+[file (aProcess.name + '.html', false, 'UTF-8')]
+
+<head>
+	<title>
+		[aProcess.name/]
+	</title>
+</head>
+
+<body>
+	<h1> 
+		Process "[aProcess.name/]"
+	</h1>
+	<h2> 
+		Work Definitions
+	</h2>
+	[let wds : OrderedSet(WorkDefinition) = aProcess.getWorkDef() ]
+		[if (wds->size() > 0) ]
+		<ul>
+			[for (awd : WorkDefinition | wds)]
+			<li>
+				[awd.toHTML()/]
+			[/for]
+			</li>
+		</ul>
+		[else]
+		<b>
+			None.
+		</b>
+		[/if]
+	[/let]
+</body>
+
+[/file]
+[/template]
+
+[query public getWorkDef(p: Process) : OrderedSet(WorkDefinition) =
+        p.processElements ->select( e | e.oclIsKindOf(WorkDefinition) )
+                ->collect( e | e.oclAsType(WorkDefinition) )
+                ->asOrderedSet()
+/]
+
+
+[query public toState(link: WorkSequenceType) : String =
+	if link = WorkSequenceType::startToStart or link = WorkSequenceType::startToFinish then
+		'started'
+	else
+		'finished'
+	endif
+/]
+
+[template public toHTML(wd : WorkDefinition) post (trim()) ]
+	[wd.name /] [for (ws: WorkSequence | wd.linksToPredecessors)
+	before (' requires ') separator (', ') after('.')
+	][ws.predecessor.name /] to be [ws.linkType.toState()
+	/][/for]
+[/template]

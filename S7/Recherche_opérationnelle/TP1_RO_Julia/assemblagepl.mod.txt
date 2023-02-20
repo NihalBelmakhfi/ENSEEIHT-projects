@@ -1,0 +1,39 @@
+#  GLPK model pile created by SUN for RO teaching
+
+
+###############################  Model ###############################
+
+
+###############################  Sets  ###############################
+
+set VOITURES; 
+
+################### Variables ###################
+
+var Q{i in VOITURES};
+
+###################  Constants: Data to load   #########################
+
+param surface;
+param tpsProb;
+param tempsParVoiture{i in VOITURES};
+param tailleParVoiture{i in VOITURES};
+param prixParVoiture{i in VOITURES};
+param NombreVoitureMax{i in VOITURES};
+
+################### Constraints ###################
+
+s.t. NombreDheuresMaxParSemaines: 
+    sum{i in VOITURES} Q[i] * tempsParVoiture[i] <= tpsProb;
+s.t. EspaceDansParking: 
+    sum{i in VOITURES} Q[i] * tailleParVoiture[i] <= surface;
+s.t. NombrereVoituresMaxLParSemaines {i in VOITURES}: 
+    Q[i] <= NombreVoitureMax[i];
+
+
+###### Objective ######
+
+maximize MargeTotale: 
+    sum{i in VOITURES} Q[i] * prixParVoiture[i];
+
+end;

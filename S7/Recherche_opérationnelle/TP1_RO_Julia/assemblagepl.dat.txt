@@ -1,0 +1,29 @@
+# le problème d'assemblage
+data;
+
+set VOITURES :=
+VL
+VS;
+
+
+param surface :=1500;
+
+param tpsProb := 60;
+
+param tempsParVoiture :=
+VL 0.06
+VS 0.05;
+
+param tailleParVoiture:=
+VL 10
+VS 20;
+
+param prixParVoiture:=
+VL 10000
+VS 9000;
+
+param NombreVoitureMax:=
+VL 800
+VS 1000000;
+
+end;

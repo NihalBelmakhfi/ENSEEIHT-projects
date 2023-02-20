@@ -1,0 +1,32 @@
+import 'reseaupetri.ecore'
+
+package reseauPetri	
+
+context Arc
+inv MemeReseauDePetri('l arc, la source et la destination doivent appartenir au meme réseau de petri'):
+	self.source.PetriNet = self.destination.PetriNet = self.PetriNet
+	
+context Place
+inv nmbrJetonsPositif('Le nombre de jetons dans une place doit etre positif ou nul'):
+	self.nbJetons >= 0
+		
+context Arc		
+inv TransitoPlace('la source et la destination sont différents'):
+	self.source <> self.destination
+		
+context Arc
+inv typeTransiToPlace('Une transition doit etre suivie nécessairement par une place'): 
+	self.source.oclType() <> self.destination.oclType()
+	
+context Arc
+inv nmbrJetonsConsomPositif('Le nombre de jetons à consommer (sur un arc) doit etre positif ou nul'):
+	self.jetonsConsom > 0
+
+context Arc
+inv SourcePlace('La source d un ReadArc doit etre nécessairement une place'):
+	if self.type = readArc then self.source.oclType() = Place
+	else true
+	endif
+		
+
+endpackage

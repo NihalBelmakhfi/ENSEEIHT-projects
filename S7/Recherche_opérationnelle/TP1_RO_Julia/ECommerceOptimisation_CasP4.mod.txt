@@ -1,0 +1,42 @@
+#  GLPK model file created by SUN for RO teaching
+
+
+###############################  Model ###############################
+
+
+###############################  Sets  ###############################
+
+set CLIENTS;
+set CLIENTSsv;
+
+################### Variables ###################
+
+var Passages{c1 in CLIENTS, c2 in CLIENTS}, binary;
+var Ordre{c in CLIENTSsv}, integer;
+
+###################  Constants: Data to load   #########################
+
+param Distance{c1 in CLIENTS, c2 in CLIENTS};
+param n;
+
+################### Constraints ###################
+
+s.t. ClientSuivant {c1 in CLIENTS}:
+    sum{c2 in CLIENTS} Passages[c1,c2] = 1;
+s.t. ClientPrecedent {c2 in CLIENTS}:
+    sum{c1 in CLIENTS} Passages[c1,c2] = 1;
+s.t. EliminerSubTours{c1 in CLIENTSsv, c2 in CLIENTSsv}:
+	Ordre[c2] + (n-2) >= Ordre[c1] + (n-1)*Passages[c1,c2];
+s.t. OrdrePositive{c in CLIENTSsv}:
+    Ordre[c] >= 1;
+s.t. OrdreInfn{c in CLIENTSsv}:
+    Ordre[c] <= (n-1) ;
+
+
+###### Objective ######
+
+minimize DistanceTotal:
+  sum{c1 in CLIENTS} sum{c2 in CLIENTS} Passages[c1,c2] * Distance[c1,c2]; 
+
+
+end;
