@@ -1,1 +1,1 @@
-Bonjour, je suis étudiante en deuxième année à l'ENSEEIHT. Département: sciences numériques et spécialité: Big Data et High-performance computing.
+Welcome to my GitHub page! Here, you'll find a collection of projects that I've developed within an academic framework at ENSEEIHT, my engineering school. Each project showcases the skills and knowledge I've acquired in computer science, high-performance computing, and big data, all pursued with a keen interest in solving complex problems and exploring the possibilities of technology in an academic setting.
